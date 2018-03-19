@@ -1,0 +1,41 @@
+{{!-- Page to list lidmaatschappen --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'lidmaatschappen')}}</h2>
+  <div class="actions">{{#link-to "lidmaatschappen.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          
+
+          {{sortable-table-header attribute="binnenFractie" currentSort=sort}}
+{{sortable-table-header attribute="lid" currentSort=sort}}
+{{sortable-table-header attribute="lidGedurende" currentSort=sort}}
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "lidmaatschappen.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+
+            {{display-model-belongsto-relationship model=item.binnenFractie tagName='td' itemRoute='fracties.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.lid tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.lidGedurende tagName='td' itemRoute='tijdsintervallen.show' configuredLabel='stringRep'}}
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'lidmaatschappen')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "lidmaatschap")}}.
+    </div>
+  {{/if}}
+</div>

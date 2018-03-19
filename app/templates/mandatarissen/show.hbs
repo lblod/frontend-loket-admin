@@ -1,0 +1,75 @@
+{{!-- Page to show details of mandatarissen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'mandataris details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit mandataris
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "mandatarissen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "mandatarissen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of mandataris. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'rangorde'}}</td>
+        {{handle-attribute model=model attribute='rangorde' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'start'}}</td>
+        {{handle-date model=model attribute='start' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'einde'}}</td>
+        {{handle-date model=model attribute='einde' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bekleedt'}}</td>
+       {{display-model-belongsto-relationship model=model.bekleedt itemRoute='mandaten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'heeftLidmaatschap'}}</td>
+       {{display-model-belongsto-relationship model=model.heeftLidmaatschap itemRoute='lidmaatschappen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'isBestuurlijkeAliasVan'}}</td>
+       {{display-model-belongsto-relationship model=model.isBestuurlijkeAliasVan itemRoute='personen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'status'}}</td>
+       {{display-model-belongsto-relationship model=model.status itemRoute='mandataris-status-codes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'rechtsgrondenAanstelling'}}</td>
+       {{display-model-hasmany-relationship   model=model.rechtsgrondenAanstelling itemRoute='rechtsgronden-aanstelling.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'rechtsgrondenBeeindiging'}}</td>
+       {{display-model-hasmany-relationship   model=model.rechtsgrondenBeeindiging itemRoute='rechtsgronden-beeindiging.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'tijdelijkeVervangingen'}}</td>
+       {{display-model-hasmany-relationship   model=model.tijdelijkeVervangingen itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'beleidsdomein'}}</td>
+       {{display-model-hasmany-relationship   model=model.beleidsdomein itemRoute='beleidsdomein-codes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

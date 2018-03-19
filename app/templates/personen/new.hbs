@@ -1,0 +1,42 @@
+{{!-- Page to create a new persoon --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New persoon')}}</h2>
+
+  {{!--
+    Actions to save new persoon
+    or delete new persoon.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new persoon" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of persoon. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>achternaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='achternaam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>alternatieveNaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='alternatieveNaam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>gebruikteVoornaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='gebruikteVoornaam' editable=true}}</td>
+      </tr>
+      <tr><td>geboorte</td><td align='middle'>{{edit-belongs-to relName=model.geboorte relType="geboorte"}}</td></tr>
+      <tr><td>identificator</td><td align='middle'>{{edit-belongs-to relName=model.identificator relType="identificator"}}</td></tr>
+      <tr><td>geslacht</td><td align='middle'>{{edit-belongs-to relName=model.geslacht relType="geslacht-code"}}</td></tr>
+      <tr><td>isAangesteldAls</td><td align='middle'>{{edit-has-many relName=model.isAangesteldAls relType="mandataris"}}</td></tr>
+    </tbody>
+  </table>
+</div>

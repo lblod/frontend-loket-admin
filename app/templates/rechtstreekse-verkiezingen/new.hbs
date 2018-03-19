@@ -1,0 +1,36 @@
+{{!-- Page to create a new rechtstreekse-verkiezing --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New rechtstreekse-verkiezing')}}</h2>
+
+  {{!--
+    Actions to save new rechtstreekse-verkiezing
+    or delete new rechtstreekse-verkiezing.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new rechtstreekse-verkiezing" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of rechtstreekse-verkiezing. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>datum</td>
+<td align='middle'>{{handle-date model=model attribute='datum' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>geldigheid</td>
+<td align='middle'>{{handle-date model=model attribute='geldigheid' editable=true}}</td>
+      </tr>
+      <tr><td>steltSamen</td><td align='middle'>{{edit-belongs-to relName=model.steltSamen relType="bestuursorgaan"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,32 @@
+{{!-- Page to create a new geslacht-code --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New geslacht-code')}}</h2>
+
+  {{!--
+    Actions to save new geslacht-code
+    or delete new geslacht-code.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new geslacht-code" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of geslacht-code. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

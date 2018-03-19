@@ -1,0 +1,37 @@
+{{!-- Page to edit bestuurseenheid-classificatie-code --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit bestuurseenheid-classificatie-code')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete bestuurseenheid-classificatie-code.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bestuurseenheid-classificatie-code" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of bestuurseenheid-classificatie-code. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>label</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='label' editable=true}}</td>
+</tr>
+
+        
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

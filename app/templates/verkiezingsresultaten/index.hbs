@@ -1,0 +1,43 @@
+{{!-- Page to list verkiezingsresultaten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'verkiezingsresultaten')}}</h2>
+  <div class="actions">{{#link-to "verkiezingsresultaten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="aantalNaamstemmen" currentSort=sort}}
+{{sortable-table-header attribute="plaatsRangorde" currentSort=sort}}
+
+          {{sortable-table-header attribute="isResultaatVan" currentSort=sort}}
+{{sortable-table-header attribute="isResultaatVoor" currentSort=sort}}
+{{sortable-table-header attribute="gevolg" currentSort=sort}}
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "verkiezingsresultaten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='aantalNaamstemmen' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='plaatsRangorde' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.isResultaatVan tagName='td' itemRoute='personen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.isResultaatVoor tagName='td' itemRoute='kandidatenlijsten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.gevolg tagName='td' itemRoute='verkiezingsresultaat-gevolg-codes.show' configuredLabel='stringRep'}}
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'verkiezingsresultaten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "verkiezingsresultaat")}}.
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,41 @@
+{{!-- Page to show details of tijdsintervallen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'tijdsinterval details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit tijdsinterval
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "tijdsintervallen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "tijdsintervallen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of tijdsinterval. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'begin'}}</td>
+        {{handle-date model=model attribute='begin' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'einde'}}</td>
+        {{handle-date model=model attribute='einde' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>

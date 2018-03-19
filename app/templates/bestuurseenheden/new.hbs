@@ -1,0 +1,37 @@
+{{!-- Page to create a new bestuurseenheid --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New bestuurseenheid')}}</h2>
+
+  {{!--
+    Actions to save new bestuurseenheid
+    or delete new bestuurseenheid.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bestuurseenheid" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of bestuurseenheid. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>naam</td>
+<td align='middle'>{{handle-attribute model=model attribute='naam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>werkingsgebied</td>
+<td align='middle'>{{handle-attribute model=model attribute='werkingsgebied' editable=true}}</td>
+      </tr>
+      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=model.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=model.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

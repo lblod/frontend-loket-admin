@@ -1,0 +1,44 @@
+{{!-- Page to create a new bestuursorgaan --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New bestuursorgaan')}}</h2>
+
+  {{!--
+    Actions to save new bestuursorgaan
+    or delete new bestuursorgaan.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bestuursorgaan" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of bestuursorgaan. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>naam</td>
+<td align='middle'>{{handle-attribute model=model attribute='naam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>bindingEinde</td>
+<td align='middle'>{{handle-date model=model attribute='bindingEinde' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>bindingStart</td>
+<td align='middle'>{{handle-date model=model attribute='bindingStart' editable=true}}</td>
+      </tr>
+      <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=model.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+      <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=model.classificatie relType="bestuursorgaan-classificatie-code"}}</td></tr>
+      <tr><td>isTijdsspecialisatieVan</td><td align='middle'>{{edit-belongs-to relName=model.isTijdsspecialisatieVan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>wordtSamengesteldDoor</td><td align='middle'>{{edit-belongs-to relName=model.wordtSamengesteldDoor relType="rechtstreekse-verkiezing"}}</td></tr>
+      <tr><td>heeftTijdsspecialisaties</td><td align='middle'>{{edit-has-many relName=model.heeftTijdsspecialisaties relType="bestuursorgaan"}}</td></tr>
+      <tr><td>bevat</td><td align='middle'>{{edit-has-many relName=model.bevat relType="mandaat"}}</td></tr>
+    </tbody>
+  </table>
+</div>

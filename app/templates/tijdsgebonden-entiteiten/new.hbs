@@ -1,0 +1,36 @@
+{{!-- Page to create a new tijdsgebonden-entiteit --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New tijdsgebonden-entiteit')}}</h2>
+
+  {{!--
+    Actions to save new tijdsgebonden-entiteit
+    or delete new tijdsgebonden-entiteit.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new tijdsgebonden-entiteit" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of tijdsgebonden-entiteit. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>bindingEinde</td>
+<td align='middle'>{{handle-date model=model attribute='bindingEinde' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>bindingStart</td>
+<td align='middle'>{{handle-date model=model attribute='bindingStart' editable=true}}</td>
+      </tr>
+      <tr><td>isTijdsspecialisatieVan</td><td align='middle'>{{edit-belongs-to relName=model.isTijdsspecialisatieVan relType="entiteit"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

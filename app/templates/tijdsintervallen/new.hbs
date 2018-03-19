@@ -1,0 +1,36 @@
+{{!-- Page to create a new tijdsinterval --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New tijdsinterval')}}</h2>
+
+  {{!--
+    Actions to save new tijdsinterval
+    or delete new tijdsinterval.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new tijdsinterval" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of tijdsinterval. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>begin</td>
+<td align='middle'>{{handle-date model=model attribute='begin' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>einde</td>
+<td align='middle'>{{handle-date model=model attribute='einde' editable=true timePicker=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

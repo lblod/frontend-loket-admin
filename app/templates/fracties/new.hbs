@@ -1,0 +1,32 @@
+{{!-- Page to create a new fractie --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New fractie')}}</h2>
+
+  {{!--
+    Actions to save new fractie
+    or delete new fractie.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new fractie" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of fractie. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>naam</td>
+<td align='middle'>{{handle-attribute model=model attribute='naam' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

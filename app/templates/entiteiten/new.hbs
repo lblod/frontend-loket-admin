@@ -1,0 +1,29 @@
+{{!-- Page to create a new entiteit --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New entiteit')}}</h2>
+
+  {{!--
+    Actions to save new entiteit
+    or delete new entiteit.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new entiteit" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of entiteit. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      
+      
+      
+    </tbody>
+  </table>
+</div>

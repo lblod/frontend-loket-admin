@@ -1,0 +1,38 @@
+{{!-- Page to create a new verkiezingsresultaat --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New verkiezingsresultaat')}}</h2>
+
+  {{!--
+    Actions to save new verkiezingsresultaat
+    or delete new verkiezingsresultaat.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new verkiezingsresultaat" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of verkiezingsresultaat. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>aantalNaamstemmen</td>
+<td align='middle'>{{handle-attribute model=model attribute='aantalNaamstemmen' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>plaatsRangorde</td>
+<td align='middle'>{{handle-attribute model=model attribute='plaatsRangorde' editable=true}}</td>
+      </tr>
+      <tr><td>isResultaatVan</td><td align='middle'>{{edit-belongs-to relName=model.isResultaatVan relType="persoon"}}</td></tr>
+      <tr><td>isResultaatVoor</td><td align='middle'>{{edit-belongs-to relName=model.isResultaatVoor relType="kandidatenlijst"}}</td></tr>
+      <tr><td>gevolg</td><td align='middle'>{{edit-belongs-to relName=model.gevolg relType="verkiezingsresultaat-gevolg-code"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

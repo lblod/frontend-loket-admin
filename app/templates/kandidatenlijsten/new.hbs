@@ -1,0 +1,37 @@
+{{!-- Page to create a new kandidatenlijst --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New kandidatenlijst')}}</h2>
+
+  {{!--
+    Actions to save new kandidatenlijst
+    or delete new kandidatenlijst.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new kandidatenlijst" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of kandidatenlijst. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>lijstnaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='lijstnaam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>lijstnummer</td>
+<td align='middle'>{{handle-attribute model=model attribute='lijstnummer' editable=true}}</td>
+      </tr>
+      <tr><td>lijsttype</td><td align='middle'>{{edit-belongs-to relName=model.lijsttype relType="lijsttype"}}</td></tr>
+      <tr><td>rechtstreekseVerkiezing</td><td align='middle'>{{edit-belongs-to relName=model.rechtstreekseVerkiezing relType="rechtstreekse-verkiezing"}}</td></tr>
+      <tr><td>kandidaten</td><td align='middle'>{{edit-has-many relName=model.kandidaten relType="persoon"}}</td></tr>
+    </tbody>
+  </table>
+</div>

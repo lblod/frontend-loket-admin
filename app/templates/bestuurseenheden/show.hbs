@@ -1,0 +1,48 @@
+{{!-- Page to show details of bestuurseenheden --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'bestuurseenheid details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit bestuurseenheid
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "bestuurseenheden" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "bestuurseenheden.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of bestuurseenheid. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'naam'}}</td>
+        {{handle-attribute model=model attribute='naam' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'werkingsgebied'}}</td>
+        {{handle-attribute model=model attribute='werkingsgebied' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuursorgaan'}}</td>
+       {{display-model-belongsto-relationship model=model.bestuursorgaan itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'classificatie'}}</td>
+       {{display-model-belongsto-relationship model=model.classificatie itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

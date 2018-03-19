@@ -1,0 +1,48 @@
+{{!-- Page to show details of rechtsgronden-beeindiging --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'rechtsgrond-beeindiging details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit rechtsgrond-beeindiging
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "rechtsgronden-beeindiging" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "rechtsgronden-beeindiging.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of rechtsgrond-beeindiging. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'buitenwerkingtreding'}}</td>
+        {{handle-date model=model attribute='buitenwerkingtreding' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'inwekingtreding'}}</td>
+        {{handle-date model=model attribute='inwekingtreding' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'typeDocument'}}</td>
+        <td>{{display-attribute-string-set model=model attribute='typeDocument' tagName='ul' innerTagName='li' classes='string-set'}}</td>
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'bekrachtigtOntslagenVan'}}</td>
+       {{display-model-hasmany-relationship   model=model.bekrachtigtOntslagenVan itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,46 @@
+{{!-- Page to create a new mandataris --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New mandataris')}}</h2>
+
+  {{!--
+    Actions to save new mandataris
+    or delete new mandataris.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new mandataris" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of mandataris. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'rangorde'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.rangorde}}</td>
+      </tr>
+      <tr>
+        <td>start</td>
+<td align='middle'>{{handle-date model=model attribute='start' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>einde</td>
+<td align='middle'>{{handle-date model=model attribute='einde' editable=true timePicker=true}}</td>
+      </tr>
+      <tr><td>bekleedt</td><td align='middle'>{{edit-belongs-to relName=model.bekleedt relType="mandaat"}}</td></tr>
+      <tr><td>heeftLidmaatschap</td><td align='middle'>{{edit-belongs-to relName=model.heeftLidmaatschap relType="lidmaatschap"}}</td></tr>
+      <tr><td>isBestuurlijkeAliasVan</td><td align='middle'>{{edit-belongs-to relName=model.isBestuurlijkeAliasVan relType="persoon"}}</td></tr>
+      <tr><td>status</td><td align='middle'>{{edit-belongs-to relName=model.status relType="mandataris-status-code"}}</td></tr>
+      <tr><td>rechtsgrondenAanstelling</td><td align='middle'>{{edit-has-many relName=model.rechtsgrondenAanstelling relType="rechtsgrond-aanstelling"}}</td></tr>
+      <tr><td>rechtsgrondenBeeindiging</td><td align='middle'>{{edit-has-many relName=model.rechtsgrondenBeeindiging relType="rechtsgrond-beeindiging"}}</td></tr>
+      <tr><td>tijdelijkeVervangingen</td><td align='middle'>{{edit-has-many relName=model.tijdelijkeVervangingen relType="mandataris"}}</td></tr>
+      <tr><td>beleidsdomein</td><td align='middle'>{{edit-has-many relName=model.beleidsdomein relType="beleidsdomein-code"}}</td></tr>
+    </tbody>
+  </table>
+</div>

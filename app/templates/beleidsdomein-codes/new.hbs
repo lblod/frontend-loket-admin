@@ -1,0 +1,32 @@
+{{!-- Page to create a new beleidsdomein-code --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New beleidsdomein-code')}}</h2>
+
+  {{!--
+    Actions to save new beleidsdomein-code
+    or delete new beleidsdomein-code.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new beleidsdomein-code" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of beleidsdomein-code. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

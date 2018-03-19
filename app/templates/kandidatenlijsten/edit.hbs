@@ -1,0 +1,42 @@
+{{!-- Page to edit kandidatenlijst --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit kandidatenlijst')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete kandidatenlijst.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new kandidatenlijst" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of kandidatenlijst. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>lijstnaam</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='lijstnaam' editable=true}}</td>
+</tr>
+      <tr>
+      <td>lijstnummer</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='lijstnummer' editable=true}}</td>
+</tr>
+
+        <tr><td>lijsttype</td><td align='middle'>{{edit-belongs-to relName=changeset.lijsttype relType="lijsttype"}}</td></tr>
+      <tr><td>rechtstreekseVerkiezing</td><td align='middle'>{{edit-belongs-to relName=changeset.rechtstreekseVerkiezing relType="rechtstreekse-verkiezing"}}</td></tr>
+        <tr><td>kandidaten</td><td align='middle'>{{edit-has-many relName=changeset.kandidaten relType="persoon"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

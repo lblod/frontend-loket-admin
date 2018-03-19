@@ -1,0 +1,32 @@
+{{!-- Page to create a new mandaat --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New mandaat')}}</h2>
+
+  {{!--
+    Actions to save new mandaat
+    or delete new mandaat.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new mandaat" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of mandaat. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>aantalHouders</td>
+<td align='middle'>{{handle-attribute model=model attribute='aantalHouders' editable=true}}</td>
+      </tr>
+      <tr><td>bestuursfunctie</td><td align='middle'>{{edit-belongs-to relName=model.bestuursfunctie relType="bestuursfunctie-code"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

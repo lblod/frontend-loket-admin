@@ -1,0 +1,29 @@
+{{!-- Page to create a new identificator --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New identificator')}}</h2>
+
+  {{!--
+    Actions to save new identificator
+    or delete new identificator.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new identificator" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of identificator. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      
+      
+      
+    </tbody>
+  </table>
+</div>

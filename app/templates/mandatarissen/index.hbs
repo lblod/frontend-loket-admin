@@ -1,0 +1,53 @@
+{{!-- Page to list mandatarissen --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'mandatarissen')}}</h2>
+  <div class="actions">{{#link-to "mandatarissen.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="rangorde" currentSort=sort}}
+{{sortable-table-header attribute="start" currentSort=sort}}
+{{sortable-table-header attribute="einde" currentSort=sort}}
+
+          {{sortable-table-header attribute="bekleedt" currentSort=sort}}
+{{sortable-table-header attribute="heeftLidmaatschap" currentSort=sort}}
+{{sortable-table-header attribute="isBestuurlijkeAliasVan" currentSort=sort}}
+{{sortable-table-header attribute="status" currentSort=sort}}
+          {{sortable-table-header attribute="rechtsgrondenAanstelling" currentSort=sort}}
+{{sortable-table-header attribute="rechtsgrondenBeeindiging" currentSort=sort}}
+{{sortable-table-header attribute="tijdelijkeVervangingen" currentSort=sort}}
+{{sortable-table-header attribute="beleidsdomein" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "mandatarissen.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='rangorde' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='start' tagName='td' classes='properties__data' timePicker=true}}
+        {{handle-date model=item attribute='einde' tagName='td' classes='properties__data' timePicker=true}}
+            {{display-model-belongsto-relationship model=item.bekleedt tagName='td' itemRoute='mandaten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.heeftLidmaatschap tagName='td' itemRoute='lidmaatschappen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.isBestuurlijkeAliasVan tagName='td' itemRoute='personen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.status tagName='td' itemRoute='mandataris-status-codes.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.rechtsgrondenAanstelling tagName='td' itemRoute='rechtsgronden-aanstelling.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.rechtsgrondenBeeindiging tagName='td' itemRoute='rechtsgronden-beeindiging.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.tijdelijkeVervangingen tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.beleidsdomein tagName='td' itemRoute='beleidsdomein-codes.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'mandatarissen')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "mandataris")}}.
+    </div>
+  {{/if}}
+</div>

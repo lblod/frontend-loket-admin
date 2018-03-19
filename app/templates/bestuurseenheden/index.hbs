@@ -1,0 +1,41 @@
+{{!-- Page to list bestuurseenheden --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'bestuurseenheden')}}</h2>
+  <div class="actions">{{#link-to "bestuurseenheden.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="naam" currentSort=sort}}
+{{sortable-table-header attribute="werkingsgebied" currentSort=sort}}
+
+          {{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
+{{sortable-table-header attribute="classificatie" currentSort=sort}}
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "bestuurseenheden.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='naam' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='werkingsgebied' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.bestuursorgaan tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.classificatie tagName='td' itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep'}}
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'bestuurseenheden')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "bestuurseenheid")}}.
+    </div>
+  {{/if}}
+</div>

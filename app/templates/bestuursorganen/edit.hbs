@@ -1,0 +1,49 @@
+{{!-- Page to edit bestuursorgaan --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit bestuursorgaan')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete bestuursorgaan.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bestuursorgaan" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of bestuursorgaan. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>naam</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='naam' editable=true}}</td>
+</tr>
+      <tr>
+      <td>bindingEinde</td>
+      <td align='middle'>{{handle-date model=changeset attribute='bindingEinde' editable=true}}</td>
+</tr>
+      <tr>
+      <td>bindingStart</td>
+      <td align='middle'>{{handle-date model=changeset attribute='bindingStart' editable=true}}</td>
+</tr>
+
+        <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+      <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=changeset.classificatie relType="bestuursorgaan-classificatie-code"}}</td></tr>
+      <tr><td>isTijdsspecialisatieVan</td><td align='middle'>{{edit-belongs-to relName=changeset.isTijdsspecialisatieVan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>wordtSamengesteldDoor</td><td align='middle'>{{edit-belongs-to relName=changeset.wordtSamengesteldDoor relType="rechtstreekse-verkiezing"}}</td></tr>
+        <tr><td>heeftTijdsspecialisaties</td><td align='middle'>{{edit-has-many relName=changeset.heeftTijdsspecialisaties relType="bestuursorgaan"}}</td></tr>
+      <tr><td>bevat</td><td align='middle'>{{edit-has-many relName=changeset.bevat relType="mandaat"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

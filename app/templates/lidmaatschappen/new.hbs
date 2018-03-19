@@ -1,0 +1,31 @@
+{{!-- Page to create a new lidmaatschap --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New lidmaatschap')}}</h2>
+
+  {{!--
+    Actions to save new lidmaatschap
+    or delete new lidmaatschap.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new lidmaatschap" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of lidmaatschap. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      
+      <tr><td>binnenFractie</td><td align='middle'>{{edit-belongs-to relName=model.binnenFractie relType="fractie"}}</td></tr>
+      <tr><td>lid</td><td align='middle'>{{edit-belongs-to relName=model.lid relType="mandataris"}}</td></tr>
+      <tr><td>lidGedurende</td><td align='middle'>{{edit-belongs-to relName=model.lidGedurende relType="tijdsinterval"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

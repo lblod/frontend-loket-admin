@@ -1,0 +1,51 @@
+{{!-- Page to edit mandataris --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit mandataris')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete mandataris.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new mandataris" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of mandataris. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'rangorde'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.rangorde}}</td>
+      </tr>
+      <tr>
+      <td>start</td>
+      <td align='middle'>{{handle-date model=changeset attribute='start' editable=true timePicker=true}}</td>
+</tr>
+      <tr>
+      <td>einde</td>
+      <td align='middle'>{{handle-date model=changeset attribute='einde' editable=true timePicker=true}}</td>
+</tr>
+
+        <tr><td>bekleedt</td><td align='middle'>{{edit-belongs-to relName=changeset.bekleedt relType="mandaat"}}</td></tr>
+      <tr><td>heeftLidmaatschap</td><td align='middle'>{{edit-belongs-to relName=changeset.heeftLidmaatschap relType="lidmaatschap"}}</td></tr>
+      <tr><td>isBestuurlijkeAliasVan</td><td align='middle'>{{edit-belongs-to relName=changeset.isBestuurlijkeAliasVan relType="persoon"}}</td></tr>
+      <tr><td>status</td><td align='middle'>{{edit-belongs-to relName=changeset.status relType="mandataris-status-code"}}</td></tr>
+        <tr><td>rechtsgrondenAanstelling</td><td align='middle'>{{edit-has-many relName=changeset.rechtsgrondenAanstelling relType="rechtsgrond-aanstelling"}}</td></tr>
+      <tr><td>rechtsgrondenBeeindiging</td><td align='middle'>{{edit-has-many relName=changeset.rechtsgrondenBeeindiging relType="rechtsgrond-beeindiging"}}</td></tr>
+      <tr><td>tijdelijkeVervangingen</td><td align='middle'>{{edit-has-many relName=changeset.tijdelijkeVervangingen relType="mandataris"}}</td></tr>
+      <tr><td>beleidsdomein</td><td align='middle'>{{edit-has-many relName=changeset.beleidsdomein relType="beleidsdomein-code"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

@@ -1,0 +1,32 @@
+{{!-- Page to create a new mandataris-status-code --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New mandataris-status-code')}}</h2>
+
+  {{!--
+    Actions to save new mandataris-status-code
+    or delete new mandataris-status-code.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new mandataris-status-code" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of mandataris-status-code. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

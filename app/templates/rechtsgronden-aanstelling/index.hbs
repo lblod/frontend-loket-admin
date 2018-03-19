@@ -1,0 +1,41 @@
+{{!-- Page to list rechtsgronden-aanstelling --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'rechtsgronden-aanstelling')}}</h2>
+  <div class="actions">{{#link-to "rechtsgronden-aanstelling.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="buitenwerkingtreding" currentSort=sort}}
+{{sortable-table-header attribute="inwekingtreding" currentSort=sort}}
+{{sortable-table-header attribute="typeDocument" currentSort=sort}}
+
+          
+          {{sortable-table-header attribute="bekrachtigtAanstellingenVan" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "rechtsgronden-aanstelling.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+        {{handle-date model=item attribute='buitenwerkingtreding' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='inwekingtreding' tagName='td' classes='properties__data'}}
+            <td>{{display-attribute-string-set model=item attribute='typeDocument' tagName='ul' innerTagName='li' classes='string-set'}}</td>
+
+            {{display-model-hasmany-relationship   model=item.bekrachtigtAanstellingenVan tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'rechtsgronden-aanstelling')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "rechtsgrond-aanstelling")}}.
+    </div>
+  {{/if}}
+</div>

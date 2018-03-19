@@ -1,0 +1,41 @@
+{{!-- Page to list kandidatenlijsten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'kandidatenlijsten')}}</h2>
+  <div class="actions">{{#link-to "kandidatenlijsten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="lijstnaam" currentSort=sort}}
+{{sortable-table-header attribute="lijstnummer" currentSort=sort}}
+
+          {{sortable-table-header attribute="lijsttype" currentSort=sort}}
+{{sortable-table-header attribute="rechtstreekseVerkiezing" currentSort=sort}}
+          {{sortable-table-header attribute="kandidaten" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "kandidatenlijsten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='lijstnaam' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='lijstnummer' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.lijsttype tagName='td' itemRoute='lijsttypes.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.rechtstreekseVerkiezing tagName='td' itemRoute='rechtstreekse-verkiezingen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.kandidaten tagName='td' itemRoute='personen.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'kandidatenlijsten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "kandidatenlijst")}}.
+    </div>
+  {{/if}}
+</div>
