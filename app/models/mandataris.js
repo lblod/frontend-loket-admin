@@ -18,5 +18,5 @@ export default Model.extend({
   rechtsgrondenAanstelling: hasMany('rechtsgrond-aanstelling', { inverse: 'bekrachtigtAanstellingenVan' }),
   rechtsgrondenBeeindiging: hasMany('rechtsgrond-beeindiging', { inverse: 'bekrachtigtOntslagenVan' }),
   tijdelijkeVervangingen: hasMany('mandataris', { inverse: null }),
-  beleidsdomein: hasMany('beleidsdomein-code', { inverse: null })
+  beleidsdomein: hasMany('beleidsdomein-code', { inverse: 'mandatarissen' })
 });

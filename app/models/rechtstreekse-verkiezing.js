@@ -1,7 +1,7 @@
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
 import attr from 'ember-data/attr';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -10,5 +10,6 @@ export default Model.extend({
 
   datum: attr('date'),
   geldigheid: attr('date'),
-  steltSamen: belongsTo('bestuursorgaan', { inverse: 'wordtSamengesteldDoor' })
+  steltSamen: belongsTo('bestuursorgaan', { inverse: 'wordtSamengesteldDoor' }),
+  heeftLijst: hasMany('kandidatenlijst', { inverse: 'rechtstreekseVerkiezing' })
 });

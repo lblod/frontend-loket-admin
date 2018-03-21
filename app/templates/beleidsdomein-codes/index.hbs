@@ -10,7 +10,7 @@
           {{sortable-table-header attribute="label" currentSort=sort}}
 
           
-          
+          {{sortable-table-header attribute="mandatarissen" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -19,7 +19,7 @@
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='label' tagName='td' classes='properties__data'}}
 
-
+            {{display-model-hasmany-relationship   model=item.mandatarissen tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

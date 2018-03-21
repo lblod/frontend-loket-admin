@@ -31,7 +31,10 @@
         {{handle-attribute model=model attribute='label' tagName='td' classes='properties__data'}}
       </tr>
 
-
+      <tr>
+        <td class="properties__label">{{t 'mandatarissen'}}</td>
+       {{display-model-hasmany-relationship   model=model.mandatarissen itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
     </tbody>
   </table>
 </div>

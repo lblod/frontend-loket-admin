@@ -9,5 +9,6 @@ export default Model.extend({
   stringRep: collect.apply(this,['id', 'aantalHouders']),
 
   aantalHouders: attr(),
-  bestuursfunctie: belongsTo('bestuursfunctie-code', { inverse: null })
+  bestuursfunctie: belongsTo('bestuursfunctie-code', { inverse: null }),
+  bevatIn: belongsTo('bestuursorgaan', { inverse: 'bevat' })
 });
