@@ -10,6 +10,6 @@ export default Model.extend({
 
   buitenwerkingtreding: attr('date'),
   inwekingtreding: attr('date'),
-  typeDocument: attr('string-set'),
+  typeDocument: attr('uri-set'),
   bekrachtigtAanstellingenVan: hasMany('mandataris', { inverse: 'rechtsgrondenAanstelling' })
 });
