@@ -25,10 +25,7 @@
         <td>naam</td>
 <td align='middle'>{{handle-attribute model=model attribute='naam' editable=true}}</td>
       </tr>
-      <tr>
-        <td>werkingsgebied</td>
-<td align='middle'>{{handle-attribute model=model attribute='werkingsgebied' editable=true}}</td>
-      </tr>
+      <tr><td>werkingsgebied</td><td align='middle'>{{edit-belongs-to relName=model.werkingsgebied relType="werkingsgebied"}}</td></tr>
       <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=model.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
       <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=model.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
       

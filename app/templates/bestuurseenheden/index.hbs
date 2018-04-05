@@ -8,9 +8,9 @@
         <tr>
           <th class="properties__label">id</th>
           {{sortable-table-header attribute="naam" currentSort=sort}}
-{{sortable-table-header attribute="werkingsgebied" currentSort=sort}}
 
-          {{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
+          {{sortable-table-header attribute="werkingsgebied" currentSort=sort}}
+{{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
 {{sortable-table-header attribute="classificatie" currentSort=sort}}
           
         </tr>
@@ -20,7 +20,7 @@
           {{#link-to "bestuurseenheden.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='naam' tagName='td' classes='properties__data'}}
-            {{handle-attribute model=item attribute='werkingsgebied' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.werkingsgebied tagName='td' itemRoute='werkingsgebieden.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.bestuursorgaan tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.classificatie tagName='td' itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep'}}
 

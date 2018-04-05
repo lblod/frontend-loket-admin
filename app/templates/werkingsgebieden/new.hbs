@@ -1,0 +1,36 @@
+{{!-- Page to create a new werkingsgebied --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New werkingsgebied')}}</h2>
+
+  {{!--
+    Actions to save new werkingsgebied
+    or delete new werkingsgebied.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new werkingsgebied" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of werkingsgebied. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>naam</td>
+<td align='middle'>{{handle-attribute model=model attribute='naam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>niveau</td>
+<td align='middle'>{{handle-attribute model=model attribute='niveau' editable=true}}</td>
+      </tr>
+      
+      <tr><td>bestuurseenheid</td><td align='middle'>{{edit-has-many relName=model.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+    </tbody>
+  </table>
+</div>
