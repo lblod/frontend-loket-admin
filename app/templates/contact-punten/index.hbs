@@ -1,0 +1,51 @@
+{{!-- Page to list contact-punten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'contact-punten')}}</h2>
+  <div class="actions">{{#link-to "contact-punten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="land" currentSort=sort}}
+{{sortable-table-header attribute="gemeente" currentSort=sort}}
+{{sortable-table-header attribute="adres" currentSort=sort}}
+{{sortable-table-header attribute="postcode" currentSort=sort}}
+{{sortable-table-header attribute="email" currentSort=sort}}
+{{sortable-table-header attribute="telephone" currentSort=sort}}
+{{sortable-table-header attribute="fax" currentSort=sort}}
+{{sortable-table-header attribute="website" currentSort=sort}}
+
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "contact-punten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='land' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='gemeente' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='adres' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='postcode' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='email' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='telephone' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='fax' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='website' tagName='td' classes='properties__data'}}
+
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'contact-punten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "contact-punt")}}.
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,29 @@
+{{!-- Page to create a new positie --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New positie')}}</h2>
+
+  {{!--
+    Actions to save new positie
+    or delete new positie.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new positie" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of positie. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      
+      <tr><td>rol</td><td align='middle'>{{edit-belongs-to relName=model.rol relType="rol"}}</td></tr>
+      <tr><td>wordtIngevuldDoor</td><td align='middle'>{{edit-has-many relName=model.wordtIngevuldDoor relType="persoon"}}</td></tr>
+    </tbody>
+  </table>
+</div>

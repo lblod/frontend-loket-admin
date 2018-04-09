@@ -270,6 +270,66 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
+  this.route('rechtsgronden', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('vestigingen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('contact-punten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('posities', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('rollen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('organisaties', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
 });
 
 export default Router;

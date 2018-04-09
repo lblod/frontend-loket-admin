@@ -42,7 +42,22 @@
         <td class="properties__label">{{t 'classificatie'}}</td>
        {{display-model-belongsto-relationship model=model.classificatie itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
-
+      <tr>
+        <td class="properties__label">{{t 'primaireSite'}}</td>
+       {{display-model-belongsto-relationship model=model.primaireSite itemRoute='vestigingen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'politiezone'}}</td>
+       {{display-model-belongsto-relationship model=model.politiezone itemRoute='organisaties.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'contactinfo'}}</td>
+       {{display-model-hasmany-relationship   model=model.contactinfo itemRoute='contact-punten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'posities'}}</td>
+       {{display-model-hasmany-relationship   model=model.posities itemRoute='posities.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
     </tbody>
   </table>
 </div>

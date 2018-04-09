@@ -12,7 +12,10 @@
           {{sortable-table-header attribute="werkingsgebied" currentSort=sort}}
 {{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
 {{sortable-table-header attribute="classificatie" currentSort=sort}}
-          
+{{sortable-table-header attribute="primaireSite" currentSort=sort}}
+{{sortable-table-header attribute="politiezone" currentSort=sort}}
+          {{sortable-table-header attribute="contactinfo" currentSort=sort}}
+{{sortable-table-header attribute="posities" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -23,7 +26,10 @@
             {{display-model-belongsto-relationship model=item.werkingsgebied tagName='td' itemRoute='werkingsgebieden.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.bestuursorgaan tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.classificatie tagName='td' itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep'}}
-
+            {{display-model-belongsto-relationship model=item.primaireSite tagName='td' itemRoute='vestigingen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.politiezone tagName='td' itemRoute='organisaties.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.contactinfo tagName='td' itemRoute='contact-punten.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.posities tagName='td' itemRoute='posities.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

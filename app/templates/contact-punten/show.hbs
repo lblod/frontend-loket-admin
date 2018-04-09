@@ -1,0 +1,65 @@
+{{!-- Page to show details of contact-punten --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'contact-punt details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit contact-punt
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "contact-punten" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "contact-punten.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of contact-punt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'land'}}</td>
+        {{handle-attribute model=model attribute='land' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'gemeente'}}</td>
+        {{handle-attribute model=model attribute='gemeente' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'adres'}}</td>
+        {{handle-attribute model=model attribute='adres' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'postcode'}}</td>
+        {{handle-attribute model=model attribute='postcode' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'email'}}</td>
+        {{handle-attribute model=model attribute='email' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'telephone'}}</td>
+        {{handle-attribute model=model attribute='telephone' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'fax'}}</td>
+        {{handle-attribute model=model attribute='fax' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'website'}}</td>
+        {{handle-attribute model=model attribute='website' tagName='td' classes='properties__data'}}
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>

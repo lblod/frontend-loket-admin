@@ -28,7 +28,10 @@
       <tr><td>werkingsgebied</td><td align='middle'>{{edit-belongs-to relName=model.werkingsgebied relType="werkingsgebied"}}</td></tr>
       <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=model.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
       <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=model.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
-      
+      <tr><td>primaireSite</td><td align='middle'>{{edit-belongs-to relName=model.primaireSite relType="vestiging"}}</td></tr>
+      <tr><td>politiezone</td><td align='middle'>{{edit-belongs-to relName=model.politiezone relType="organisatie"}}</td></tr>
+      <tr><td>contactinfo</td><td align='middle'>{{edit-has-many relName=model.contactinfo relType="contact-punt"}}</td></tr>
+      <tr><td>posities</td><td align='middle'>{{edit-has-many relName=model.posities relType="positie"}}</td></tr>
     </tbody>
   </table>
 </div>

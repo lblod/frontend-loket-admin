@@ -1,0 +1,60 @@
+{{!-- Page to create a new contact-punt --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New contact-punt')}}</h2>
+
+  {{!--
+    Actions to save new contact-punt
+    or delete new contact-punt.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new contact-punt" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of contact-punt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>land</td>
+<td align='middle'>{{handle-attribute model=model attribute='land' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>gemeente</td>
+<td align='middle'>{{handle-attribute model=model attribute='gemeente' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>adres</td>
+<td align='middle'>{{handle-attribute model=model attribute='adres' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>postcode</td>
+<td align='middle'>{{handle-attribute model=model attribute='postcode' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>email</td>
+<td align='middle'>{{handle-attribute model=model attribute='email' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>telephone</td>
+<td align='middle'>{{handle-attribute model=model attribute='telephone' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>fax</td>
+<td align='middle'>{{handle-attribute model=model attribute='fax' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>website</td>
+<td align='middle'>{{handle-attribute model=model attribute='website' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

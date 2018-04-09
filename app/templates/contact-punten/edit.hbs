@@ -1,0 +1,65 @@
+{{!-- Page to edit contact-punt --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit contact-punt')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete contact-punt.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new contact-punt" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of contact-punt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>land</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='land' editable=true}}</td>
+</tr>
+      <tr>
+      <td>gemeente</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='gemeente' editable=true}}</td>
+</tr>
+      <tr>
+      <td>adres</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='adres' editable=true}}</td>
+</tr>
+      <tr>
+      <td>postcode</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='postcode' editable=true}}</td>
+</tr>
+      <tr>
+      <td>email</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='email' editable=true}}</td>
+</tr>
+      <tr>
+      <td>telephone</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='telephone' editable=true}}</td>
+</tr>
+      <tr>
+      <td>fax</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='fax' editable=true}}</td>
+</tr>
+      <tr>
+      <td>website</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='website' editable=true}}</td>
+</tr>
+
+        
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

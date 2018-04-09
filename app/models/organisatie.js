@@ -9,11 +9,7 @@ export default Model.extend({
   stringRep: collect.apply(this,['id', 'naam']),
 
   naam: attr(),
-  werkingsgebied: belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }),
-  bestuursorgaan: belongsTo('bestuursorgaan', { inverse: 'bestuurseenheid' }),
-  classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null }),
   primaireSite: belongsTo('vestiging', { inverse: null }),
-  politiezone: belongsTo('organisatie', { inverse: null }),
   contactinfo: hasMany('contact-punt', { inverse: null }),
   posities: hasMany('positie', { inverse: null })
 });

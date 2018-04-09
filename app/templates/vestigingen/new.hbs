@@ -1,0 +1,29 @@
+{{!-- Page to create a new vestiging --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New vestiging')}}</h2>
+
+  {{!--
+    Actions to save new vestiging
+    or delete new vestiging.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new vestiging" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of vestiging. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+      
+      <tr><td>vestigingsadres</td><td align='middle'>{{edit-belongs-to relName=model.vestigingsadres relType="contact-punt"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

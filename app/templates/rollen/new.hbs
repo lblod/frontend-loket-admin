@@ -1,0 +1,32 @@
+{{!-- Page to create a new rol --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New rol')}}</h2>
+
+  {{!--
+    Actions to save new rol
+    or delete new rol.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new rol" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of rol. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

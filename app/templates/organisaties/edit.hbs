@@ -1,19 +1,19 @@
-{{!-- Page to edit bestuurseenheid --}}
+{{!-- Page to edit organisatie --}}
 {{#with (changeset model skipValidate=true) as |changeset|}}
 <div class="edit">
-  <h2 class="title">{{t (humanize 'Edit bestuurseenheid')}}</h2>
+  <h2 class="title">{{t (humanize 'Edit organisatie')}}</h2>
 
   {{!--
     Actions to save or cancel changes;
-    or delete bestuurseenheid.
+    or delete organisatie.
   --}}
   <div class="actions">
-    <button type="button" class="btn save" title="Save new bestuurseenheid" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn save" title="Save new organisatie" {{action 'save' changeset model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
     <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
   </div>
 
-  {{!-- Table to show details of bestuurseenheid. --}}
+  {{!-- Table to show details of organisatie. --}}
   <table>
     <thead>
       <tr>
@@ -28,11 +28,7 @@
       <td align='middle'>{{handle-attribute model=changeset attribute='naam' editable=true}}</td>
 </tr>
 
-        <tr><td>werkingsgebied</td><td align='middle'>{{edit-belongs-to relName=changeset.werkingsgebied relType="werkingsgebied"}}</td></tr>
-      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
-      <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=changeset.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
-      <tr><td>primaireSite</td><td align='middle'>{{edit-belongs-to relName=changeset.primaireSite relType="vestiging"}}</td></tr>
-      <tr><td>politiezone</td><td align='middle'>{{edit-belongs-to relName=changeset.politiezone relType="organisatie"}}</td></tr>
+        <tr><td>primaireSite</td><td align='middle'>{{edit-belongs-to relName=changeset.primaireSite relType="vestiging"}}</td></tr>
         <tr><td>contactinfo</td><td align='middle'>{{edit-has-many relName=changeset.contactinfo relType="contact-punt"}}</td></tr>
       <tr><td>posities</td><td align='middle'>{{edit-has-many relName=changeset.posities relType="positie"}}</td></tr>
 
