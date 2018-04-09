@@ -38,7 +38,10 @@
         <td class="properties__label">{{t 'steltSamen'}}</td>
        {{display-model-belongsto-relationship model=model.steltSamen itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
-
+      <tr>
+        <td class="properties__label">{{t 'heeftLijst'}}</td>
+       {{display-model-hasmany-relationship   model=model.heeftLijst itemRoute='kandidatenlijsten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
     </tbody>
   </table>
 </div>

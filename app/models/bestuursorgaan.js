@@ -16,5 +16,5 @@ export default Model.extend({
   isTijdsspecialisatieVan: belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' }),
   wordtSamengesteldDoor: belongsTo('rechtstreekse-verkiezing', { inverse: 'steltSamen' }),
   heeftTijdsspecialisaties: hasMany('bestuursorgaan', { inverse: 'isTijdsspecialisatieVan' }),
-  bevat: hasMany('mandaat', { inverse: null })
+  bevat: hasMany('mandaat', { inverse: 'bevatIn' })
 });

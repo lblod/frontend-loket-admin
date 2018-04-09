@@ -54,6 +54,10 @@
         <td class="properties__label">{{t 'isAangesteldAls'}}</td>
        {{display-model-hasmany-relationship   model=model.isAangesteldAls itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
+      <tr>
+        <td class="properties__label">{{t 'isKandidaatVoor'}}</td>
+       {{display-model-hasmany-relationship   model=model.isKandidaatVoor itemRoute='kandidatenlijsten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
     </tbody>
   </table>
 </div>

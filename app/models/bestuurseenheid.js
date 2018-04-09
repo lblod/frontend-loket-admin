@@ -6,10 +6,10 @@ import { belongsTo } from 'ember-data/relationships';
 export default Model.extend({
   // A string representation of this model, based on its attributes.
   // This is what mu-cl-resources uses to search on, and how the model will be presented while editing relationships.
-  stringRep: collect.apply(this,['id', 'naam', 'werkingsgebied']),
+  stringRep: collect.apply(this,['id', 'naam']),
 
   naam: attr(),
-  werkingsgebied: attr(),
+  werkingsgebied: belongsTo('werkingsgebied', { inverse: 'bestuurseenheid' }),
   bestuursorgaan: belongsTo('bestuursorgaan', { inverse: 'bestuurseenheid' }),
   classificatie: belongsTo('bestuurseenheid-classificatie-code', { inverse: null })
 });

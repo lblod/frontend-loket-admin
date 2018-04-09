@@ -15,6 +15,7 @@
 {{sortable-table-header attribute="identificator" currentSort=sort}}
 {{sortable-table-header attribute="geslacht" currentSort=sort}}
           {{sortable-table-header attribute="isAangesteldAls" currentSort=sort}}
+{{sortable-table-header attribute="isKandidaatVoor" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@
             {{display-model-belongsto-relationship model=item.identificator tagName='td' itemRoute='identificatoren.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.geslacht tagName='td' itemRoute='geslacht-codes.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.isAangesteldAls tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.isKandidaatVoor tagName='td' itemRoute='kandidatenlijsten.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

@@ -31,8 +31,8 @@
         {{handle-attribute model=model attribute='naam' tagName='td' classes='properties__data'}}
       </tr>
       <tr>
-        <td>{{t 'werkingsgebied'}}</td>
-        {{handle-attribute model=model attribute='werkingsgebied' tagName='td' classes='properties__data'}}
+        <td class="properties__label">{{t 'werkingsgebied'}}</td>
+       {{display-model-belongsto-relationship model=model.werkingsgebied itemRoute='werkingsgebieden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
       <tr>
         <td class="properties__label">{{t 'bestuursorgaan'}}</td>

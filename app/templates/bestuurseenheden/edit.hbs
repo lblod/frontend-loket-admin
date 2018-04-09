@@ -27,12 +27,9 @@
       <td>naam</td>
       <td align='middle'>{{handle-attribute model=changeset attribute='naam' editable=true}}</td>
 </tr>
-      <tr>
-      <td>werkingsgebied</td>
-      <td align='middle'>{{handle-attribute model=changeset attribute='werkingsgebied' editable=true}}</td>
-</tr>
 
-        <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
+        <tr><td>werkingsgebied</td><td align='middle'>{{edit-belongs-to relName=changeset.werkingsgebied relType="werkingsgebied"}}</td></tr>
+      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
       <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=changeset.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
         
 

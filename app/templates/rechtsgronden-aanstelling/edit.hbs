@@ -32,9 +32,9 @@
       <td align='middle'>{{handle-date model=changeset attribute='inwekingtreding' editable=true}}</td>
 </tr>
       <tr>
-      <td>typeDocument</td>
-      <td align='middle'>{{handle-attribute model=changeset attribute='typeDocument' editable=true}}</td>
-</tr>
+        <td>{{t 'typeDocument'}}</td>
+        <td align='middle'>{{edit-string-set data=changeset.typeDocument tagName='ul' classes='string-set'}}</td>
+      </tr>
 
         
         <tr><td>bekrachtigtAanstellingenVan</td><td align='middle'>{{edit-has-many relName=changeset.bekrachtigtAanstellingenVan relType="mandataris"}}</td></tr>

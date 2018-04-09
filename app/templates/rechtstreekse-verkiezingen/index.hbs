@@ -11,7 +11,7 @@
 {{sortable-table-header attribute="geldigheid" currentSort=sort}}
 
           {{sortable-table-header attribute="steltSamen" currentSort=sort}}
-          
+          {{sortable-table-header attribute="heeftLijst" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
         {{handle-date model=item attribute='datum' tagName='td' classes='properties__data'}}
         {{handle-date model=item attribute='geldigheid' tagName='td' classes='properties__data'}}
             {{display-model-belongsto-relationship model=item.steltSamen tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
-
+            {{display-model-hasmany-relationship   model=item.heeftLijst tagName='td' itemRoute='kandidatenlijsten.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>
