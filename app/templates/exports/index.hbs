@@ -1,0 +1,43 @@
+{{!-- Page to list exports --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'exports')}}</h2>
+  
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="filename" currentSort=sort}}
+{{sortable-table-header attribute="format" currentSort=sort}}
+{{sortable-table-header attribute="filesize" currentSort=sort}}
+{{sortable-table-header attribute="created" currentSort=sort}}
+
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "exports.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='filename' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='format' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='filesize' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='created' tagName='td' classes='properties__data' timePicker=true}}
+
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'exports')}} in the database.
+      
+    </div>
+  {{/if}}
+</div>
