@@ -1,8 +1,8 @@
 {
-  "name": "frontend-mandatendatabank-admin",
+  "name": "frontend-loket-admin",
   "version": "0.2.0",
   "private": true,
-  "description": "Mandatendatabank admin application",
+  "description": "Loket admin application",
   "author": "info@redpencil.io",
   "directories": {
     "doc": "doc",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lblod/frontend-mandatendatabank-admin.git"
+    "url": "git+https://github.com/lblod/frontend-loket-admin.git"
   },
   "scripts": {
     "build": "ember build",

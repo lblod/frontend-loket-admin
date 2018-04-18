@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'frontend-mandatendatabank-admin',
+    modulePrefix: 'frontend-loket-admin',
     environment,
     rootURL: '/',
     locationType: 'auto',

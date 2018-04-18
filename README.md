@@ -1,3 +1,3 @@
-# frontend-mandatendatabank-admin
+# frontend-loket-admin
 
-An editor allowing you to edit all the resources of the mandatendatabank.
+An editor allowing you to edit all the resources of the Loket application.
