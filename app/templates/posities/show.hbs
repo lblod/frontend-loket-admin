@@ -32,6 +32,10 @@
        {{display-model-belongsto-relationship model=model.rol itemRoute='rollen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
       <tr>
+        <td class="properties__label">{{t 'isPositieIn'}}</td>
+       {{display-model-belongsto-relationship model=model.isPositieIn itemRoute='organisaties.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
         <td class="properties__label">{{t 'wordtIngevuldDoor'}}</td>
        {{display-model-hasmany-relationship   model=model.wordtIngevuldDoor itemRoute='personen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>

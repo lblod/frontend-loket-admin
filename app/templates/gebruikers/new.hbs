@@ -1,0 +1,41 @@
+{{!-- Page to create a new gebruiker --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New gebruiker')}}</h2>
+
+  {{!--
+    Actions to save new gebruiker
+    or delete new gebruiker.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new gebruiker" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of gebruiker. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>voornaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='voornaam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>achternaam</td>
+<td align='middle'>{{handle-attribute model=model attribute='achternaam' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>rijksregisterNummer</td>
+<td align='middle'>{{handle-attribute model=model attribute='rijksregisterNummer' editable=true}}</td>
+      </tr>
+      
+      <tr><td>account</td><td align='middle'>{{edit-has-many relName=model.account relType="account"}}</td></tr>
+      <tr><td>bestuurseenheden</td><td align='middle'>{{edit-has-many relName=model.bestuurseenheden relType="bestuurseenheid"}}</td></tr>
+    </tbody>
+  </table>
+</div>

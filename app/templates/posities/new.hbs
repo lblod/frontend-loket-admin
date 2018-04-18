@@ -23,6 +23,7 @@
       {{!-- Creating rows for attributes depending on the type of property --}}
       
       <tr><td>rol</td><td align='middle'>{{edit-belongs-to relName=model.rol relType="rol"}}</td></tr>
+      <tr><td>isPositieIn</td><td align='middle'>{{edit-belongs-to relName=model.isPositieIn relType="organisatie"}}</td></tr>
       <tr><td>wordtIngevuldDoor</td><td align='middle'>{{edit-has-many relName=model.wordtIngevuldDoor relType="persoon"}}</td></tr>
     </tbody>
   </table>

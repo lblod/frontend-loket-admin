@@ -15,5 +15,5 @@ export default Model.extend({
   primaireSite: belongsTo('vestiging', { inverse: null }),
   politiezone: belongsTo('organisatie', { inverse: null }),
   contactinfo: hasMany('contact-punt', { inverse: null }),
-  posities: hasMany('positie', { inverse: null })
+  posities: hasMany('positie', { inverse: 'isPositieIn' })
 });

@@ -38,7 +38,7 @@ export default Route.extend({
       options['sort'] = params.sort;
     }
 
-    return this.get('store').query('export', options);
+    return this.get('store').query('account', options);
   },
 
   // unsticking query parameters

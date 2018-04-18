@@ -4,6 +4,6 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   store: inject(),
   model(params) {
-    return this.store.find('export', params.id);
+    return this.store.find('account', params.id);
   }
 });

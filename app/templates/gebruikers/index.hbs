@@ -1,0 +1,43 @@
+{{!-- Page to list gebruikers --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'gebruikers')}}</h2>
+  <div class="actions">{{#link-to "gebruikers.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="voornaam" currentSort=sort}}
+{{sortable-table-header attribute="achternaam" currentSort=sort}}
+{{sortable-table-header attribute="rijksregisterNummer" currentSort=sort}}
+
+          
+          {{sortable-table-header attribute="account" currentSort=sort}}
+{{sortable-table-header attribute="bestuurseenheden" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "gebruikers.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='voornaam' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='achternaam' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='rijksregisterNummer' tagName='td' classes='properties__data'}}
+
+            {{display-model-hasmany-relationship   model=item.account tagName='td' itemRoute='accounts.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.bestuurseenheden tagName='td' itemRoute='bestuurseenheden.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'gebruikers')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "gebruiker")}}.
+    </div>
+  {{/if}}
+</div>

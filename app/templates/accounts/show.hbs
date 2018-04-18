@@ -1,0 +1,44 @@
+{{!-- Page to show details of accounts --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'account details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit account
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "accounts" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "accounts.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of account. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'provider'}}</td>
+        {{handle-attribute model=model attribute='provider' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'voId'}}</td>
+        {{handle-attribute model=model attribute='voId' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'gebruiker'}}</td>
+       {{display-model-belongsto-relationship model=model.gebruiker itemRoute='gebruikers.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

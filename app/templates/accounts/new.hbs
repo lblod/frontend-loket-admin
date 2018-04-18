@@ -1,0 +1,36 @@
+{{!-- Page to create a new account --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New account')}}</h2>
+
+  {{!--
+    Actions to save new account
+    or delete new account.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new account" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of account. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>provider</td>
+<td align='middle'>{{handle-attribute model=model attribute='provider' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>voId</td>
+<td align='middle'>{{handle-attribute model=model attribute='voId' editable=true}}</td>
+      </tr>
+      <tr><td>gebruiker</td><td align='middle'>{{edit-belongs-to relName=model.gebruiker relType="gebruiker"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

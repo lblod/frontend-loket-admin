@@ -10,6 +10,7 @@
           
 
           {{sortable-table-header attribute="rol" currentSort=sort}}
+{{sortable-table-header attribute="isPositieIn" currentSort=sort}}
           {{sortable-table-header attribute="wordtIngevuldDoor" currentSort=sort}}
         </tr>
       </thead>
@@ -19,6 +20,7 @@
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
 
             {{display-model-belongsto-relationship model=item.rol tagName='td' itemRoute='rollen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.isPositieIn tagName='td' itemRoute='organisaties.show' configuredLabel='stringRep'}}
             {{display-model-hasmany-relationship   model=item.wordtIngevuldDoor tagName='td' itemRoute='personen.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}

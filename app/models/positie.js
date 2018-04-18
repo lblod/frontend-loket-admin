@@ -8,5 +8,6 @@ export default Model.extend({
   stringRep: collect.apply(this,['id']),
 
   rol: belongsTo('rol', { inverse: null }),
+  isPositieIn: belongsTo('organisatie', { inverse: null }),
   wordtIngevuldDoor: hasMany('persoon', { inverse: null })
 });

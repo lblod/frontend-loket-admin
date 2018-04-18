@@ -1,0 +1,52 @@
+{{!-- Page to show details of gebruikers --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'gebruiker details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit gebruiker
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "gebruikers" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "gebruikers.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of gebruiker. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'voornaam'}}</td>
+        {{handle-attribute model=model attribute='voornaam' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'achternaam'}}</td>
+        {{handle-attribute model=model attribute='achternaam' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'rijksregisterNummer'}}</td>
+        {{handle-attribute model=model attribute='rijksregisterNummer' tagName='td' classes='properties__data'}}
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'account'}}</td>
+       {{display-model-hasmany-relationship   model=model.account itemRoute='accounts.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuurseenheden'}}</td>
+       {{display-model-hasmany-relationship   model=model.bestuurseenheden itemRoute='bestuurseenheden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>
