@@ -38,6 +38,6 @@ inflector.irregular("editor-document", "editor-documents");
 inflector.irregular("editor-document-status", "editor-document-statuses");
 inflector.irregular("export", "exports");
 inflector.irregular("account", "accounts");
-
+inflector.irregular('identificator', 'identificatoren');
 // Meet Ember Inspector's expectation of an export
 export default {};
