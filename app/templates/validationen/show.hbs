@@ -1,0 +1,51 @@
+{{!-- Page to show details of validationen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'validation details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit validation
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "validationen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "validationen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of validation. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'name'}}</td>
+        {{handle-attribute model=model attribute='name' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'description'}}</td>
+        {{handle-attribute model=model attribute='description' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'status'}}</td>
+        {{handle-attribute model=model attribute='status' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'execution'}}</td>
+       {{display-model-belongsto-relationship model=model.execution itemRoute='validation-executionen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'errors'}}</td>
+       {{display-model-hasmany-relationship   model=model.errors itemRoute='validation-erroren.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,40 @@
+{{!-- Page to create a new validation --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New validation')}}</h2>
+
+  {{!--
+    Actions to save new validation
+    or delete new validation.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new validation" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of validation. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>name</td>
+<td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>description</td>
+<td align='middle'>{{handle-attribute model=model attribute='description' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>status</td>
+<td align='middle'>{{handle-attribute model=model attribute='status' editable=true}}</td>
+      </tr>
+      <tr><td>execution</td><td align='middle'>{{edit-belongs-to relName=model.execution relType="validation-execution"}}</td></tr>
+      <tr><td>errors</td><td align='middle'>{{edit-has-many relName=model.errors relType="validation-error"}}</td></tr>
+    </tbody>
+  </table>
+</div>

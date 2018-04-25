@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th class="properties__label">id</th>
-          
+          {{sortable-table-header attribute="identificator" currentSort=sort}}
 
           
           
@@ -17,7 +17,7 @@
         {{#each model as |item|}}
           {{#link-to "identificatoren.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
-
+            {{handle-attribute model=item attribute='identificator' tagName='td' classes='properties__data'}}
 
 
           {{/link-to}}
