@@ -1,0 +1,55 @@
+{{!-- Page to show details of bbcdr-reports --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'bbcdr-report details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit bbcdr-report
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "bbcdr-reports" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "bbcdr-reports.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of bbcdr-report. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'created'}}</td>
+        {{handle-date model=model attribute='created' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'modified'}}</td>
+        {{handle-attribute model=model attribute='modified' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'status'}}</td>
+       {{display-model-belongsto-relationship model=model.status itemRoute='document-statuses.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'lastModifier'}}</td>
+       {{display-model-belongsto-relationship model=model.lastModifier itemRoute='gebruikers.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuurseenheid'}}</td>
+       {{display-model-belongsto-relationship model=model.bestuurseenheid itemRoute='bestuurseenheden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'files'}}</td>
+       {{display-model-hasmany-relationship   model=model.files itemRoute='files.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

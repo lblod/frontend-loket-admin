@@ -350,6 +350,66 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
+  this.route('validation-executions', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('validations', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('validation-errors', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('document-statuses', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('files', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('bbcdr-reports', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
 });
 
 export default Router;

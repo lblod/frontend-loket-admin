@@ -1,0 +1,38 @@
+{{!-- Page to create a new bbcdr-report --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New bbcdr-report')}}</h2>
+
+  {{!--
+    Actions to save new bbcdr-report
+    or delete new bbcdr-report.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bbcdr-report" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of bbcdr-report. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>created</td>
+<td align='middle'>{{handle-date model=model attribute='created' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>modified</td>
+<td align='middle'>{{handle-attribute model=model attribute='modified' editable=true}}</td>
+      </tr>
+      <tr><td>status</td><td align='middle'>{{edit-belongs-to relName=model.status relType="document-status"}}</td></tr>
+      <tr><td>lastModifier</td><td align='middle'>{{edit-belongs-to relName=model.lastModifier relType="gebruiker"}}</td></tr>
+      <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=model.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+      <tr><td>files</td><td align='middle'>{{edit-has-many relName=model.files relType="file"}}</td></tr>
+    </tbody>
+  </table>
+</div>

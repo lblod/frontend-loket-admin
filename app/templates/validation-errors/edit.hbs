@@ -1,0 +1,38 @@
+{{!-- Page to edit validation-error --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit validation-error')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete validation-error.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new validation-error" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of validation-error. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>message</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='message' editable=true}}</td>
+</tr>
+
+        <tr><td>execution</td><td align='middle'>{{edit-belongs-to relName=changeset.execution relType="validation-execution"}}</td></tr>
+      <tr><td>validation</td><td align='middle'>{{edit-belongs-to relName=changeset.validation relType="validation"}}</td></tr>
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

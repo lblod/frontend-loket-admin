@@ -1,0 +1,43 @@
+{{!-- Page to list validation-executions --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'validation-executions')}}</h2>
+  <div class="actions">{{#link-to "validation-executions.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="status" currentSort=sort}}
+{{sortable-table-header attribute="validationSet" currentSort=sort}}
+{{sortable-table-header attribute="created" currentSort=sort}}
+
+          
+          {{sortable-table-header attribute="errors" currentSort=sort}}
+{{sortable-table-header attribute="validations" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "validation-executions.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='status' tagName='td' classes='properties__data'}}
+            <td>{{display-attribute-string-set model=item attribute='validationSet' tagName='ul' innerTagName='li' classes='string-set'}}</td>
+        {{handle-date model=item attribute='created' tagName='td' classes='properties__data' timePicker=true}}
+
+            {{display-model-hasmany-relationship   model=item.errors tagName='td' itemRoute='validation-errors.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.validations tagName='td' itemRoute='validations.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'validation-executions')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "validation-execution")}}.
+    </div>
+  {{/if}}
+</div>

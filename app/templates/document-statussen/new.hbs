@@ -1,0 +1,32 @@
+{{!-- Page to create a new document-status --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New document-status')}}</h2>
+
+  {{!--
+    Actions to save new document-status
+    or delete new document-status.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new document-status" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of document-status. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>name</td>
+<td align='middle'>{{handle-attribute model=model attribute='name' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

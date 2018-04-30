@@ -1,0 +1,43 @@
+{{!-- Page to list bbcdr-reports --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'bbcdr-reports')}}</h2>
+  <div class="actions">{{#link-to "bbcdr-reports.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="created" currentSort=sort}}
+{{sortable-table-header attribute="modified" currentSort=sort}}
+
+          {{sortable-table-header attribute="status" currentSort=sort}}
+{{sortable-table-header attribute="lastModifier" currentSort=sort}}
+{{sortable-table-header attribute="bestuurseenheid" currentSort=sort}}
+          {{sortable-table-header attribute="files" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "bbcdr-reports.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+        {{handle-date model=item attribute='created' tagName='td' classes='properties__data' timePicker=true}}
+            {{handle-attribute model=item attribute='modified' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.status tagName='td' itemRoute='document-statuses.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.lastModifier tagName='td' itemRoute='gebruikers.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.bestuurseenheid tagName='td' itemRoute='bestuurseenheden.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.files tagName='td' itemRoute='files.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'bbcdr-reports')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "bbcdr-report")}}.
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,48 @@
+{{!-- Page to create a new file --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New file')}}</h2>
+
+  {{!--
+    Actions to save new file
+    or delete new file.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new file" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of file. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>filename</td>
+<td align='middle'>{{handle-attribute model=model attribute='filename' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>format</td>
+<td align='middle'>{{handle-attribute model=model attribute='format' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>size</td>
+<td align='middle'>{{handle-attribute model=model attribute='size' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>extension</td>
+<td align='middle'>{{handle-attribute model=model attribute='extension' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>created</td>
+<td align='middle'>{{handle-date model=model attribute='created' editable=true timePicker=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

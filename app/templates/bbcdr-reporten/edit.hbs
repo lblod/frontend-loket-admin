@@ -1,0 +1,43 @@
+{{!-- Page to edit bbcdr-report --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit bbcdr-report')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete bbcdr-report.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new bbcdr-report" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of bbcdr-report. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>created</td>
+      <td align='middle'>{{handle-date model=changeset attribute='created' editable=true timePicker=true}}</td>
+</tr>
+      <tr>
+      <td>modified</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='modified' editable=true}}</td>
+</tr>
+
+        <tr><td>status</td><td align='middle'>{{edit-belongs-to relName=changeset.status relType="document-status"}}</td></tr>
+      <tr><td>lastModifier</td><td align='middle'>{{edit-belongs-to relName=changeset.lastModifier relType="gebruiker"}}</td></tr>
+      <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+        <tr><td>files</td><td align='middle'>{{edit-has-many relName=changeset.files relType="file"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

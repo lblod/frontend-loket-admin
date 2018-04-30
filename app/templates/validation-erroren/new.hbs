@@ -1,0 +1,33 @@
+{{!-- Page to create a new validation-error --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New validation-error')}}</h2>
+
+  {{!--
+    Actions to save new validation-error
+    or delete new validation-error.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new validation-error" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of validation-error. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>message</td>
+<td align='middle'>{{handle-attribute model=model attribute='message' editable=true}}</td>
+      </tr>
+      <tr><td>execution</td><td align='middle'>{{edit-belongs-to relName=model.execution relType="validation-execution"}}</td></tr>
+      <tr><td>validation</td><td align='middle'>{{edit-belongs-to relName=model.validation relType="validation"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>
