@@ -9,7 +9,7 @@ export default Model.extend({
   stringRep: collect.apply(this,['id', 'created', 'modified']),
 
   created: attr('datetime'),
-  modified: attr(),
+  modified: attr('datetime'),
   status: belongsTo('document-status', { inverse: null }),
   lastModifier: belongsTo('gebruiker', { inverse: null }),
   bestuurseenheid: belongsTo('bestuurseenheid', { inverse: null }),

@@ -21,7 +21,7 @@
           {{#link-to "bbcdr-reports.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
         {{handle-date model=item attribute='created' tagName='td' classes='properties__data' timePicker=true}}
-            {{handle-attribute model=item attribute='modified' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='modified' tagName='td' classes='properties__data' timePicker=true}}
             {{display-model-belongsto-relationship model=item.status tagName='td' itemRoute='document-statuses.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.lastModifier tagName='td' itemRoute='gebruikers.show' configuredLabel='stringRep'}}
             {{display-model-belongsto-relationship model=item.bestuurseenheid tagName='td' itemRoute='bestuurseenheden.show' configuredLabel='stringRep'}}
