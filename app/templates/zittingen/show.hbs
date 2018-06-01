@@ -1,0 +1,79 @@
+{{!-- Page to show details of zittingen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'zitting details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit zitting
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "zittingen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "zittingen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of zitting. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'geplandeStart'}}</td>
+        {{handle-date model=model attribute='geplandeStart' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'gestartOpTijdstip'}}</td>
+        {{handle-date model=model attribute='gestartOpTijdstip' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'geeindigdOpTijdstip'}}</td>
+        {{handle-date model=model attribute='geeindigdOpTijdstip' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'opLocatie'}}</td>
+        {{handle-attribute model=model attribute='opLocatie' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'afgeleidUit'}}</td>
+        {{handle-attribute model=model attribute='afgeleidUit' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuursorgaan'}}</td>
+       {{display-model-belongsto-relationship model=model.bestuursorgaan itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'secretaris'}}</td>
+       {{display-model-belongsto-relationship model=model.secretaris itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'voorzitter'}}</td>
+       {{display-model-belongsto-relationship model=model.voorzitter itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'agenda'}}</td>
+       {{display-model-belongsto-relationship model=model.agenda itemRoute='agendas.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'notulen'}}</td>
+       {{display-model-belongsto-relationship model=model.notulen itemRoute='editor-documents.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'behandeldeAgendapunten'}}</td>
+       {{display-model-hasmany-relationship   model=model.behandeldeAgendapunten itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'aanwezigenBijStart'}}</td>
+       {{display-model-hasmany-relationship   model=model.aanwezigenBijStart itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

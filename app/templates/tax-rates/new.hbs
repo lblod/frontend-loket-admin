@@ -1,0 +1,44 @@
+{{!-- Page to create a new tax-rate --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New tax-rate')}}</h2>
+
+  {{!--
+    Actions to save new tax-rate
+    or delete new tax-rate.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new tax-rate" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of tax-rate. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>amount</td>
+<td align='middle'>{{handle-attribute model=model attribute='amount' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>unit</td>
+<td align='middle'>{{handle-attribute model=model attribute='unit' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>base</td>
+<td align='middle'>{{handle-attribute model=model attribute='base' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>remark</td>
+<td align='middle'>{{handle-attribute model=model attribute='remark' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>

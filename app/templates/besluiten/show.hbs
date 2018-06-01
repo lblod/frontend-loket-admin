@@ -1,0 +1,76 @@
+{{!-- Page to show details of besluiten --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'besluit details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit besluit
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "besluiten" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "besluiten.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of besluit. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'beschrijving'}}</td>
+        {{handle-attribute model=model attribute='beschrijving' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'citeeropschrift'}}</td>
+        {{handle-attribute model=model attribute='citeeropschrift' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'motivering'}}</td>
+        {{handle-attribute model=model attribute='motivering' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'publicatiedatum'}}</td>
+        {{handle-date model=model attribute='publicatiedatum' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'inhoud'}}</td>
+        {{handle-attribute model=model attribute='inhoud' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'taal'}}</td>
+        {{handle-attribute model=model attribute='taal' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'titel'}}</td>
+        {{handle-attribute model=model attribute='titel' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'score'}}</td>
+        {{handle-attribute model=model attribute='score' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'realisatie'}}</td>
+       {{display-model-belongsto-relationship model=model.realisatie itemRoute='rechtsgronden-besluit.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'volgendUitBehandelingVanAgendapunt'}}</td>
+       {{display-model-belongsto-relationship model=model.volgendUitBehandelingVanAgendapunt itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'afgeleidUitNotule'}}</td>
+       {{display-model-belongsto-relationship model=model.afgeleidUitNotule itemRoute='editor-documents.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

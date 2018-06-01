@@ -1,0 +1,47 @@
+{{!-- Page to list artikels --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'artikels')}}</h2>
+  <div class="actions">{{#link-to "artikels.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="nummer" currentSort=sort}}
+{{sortable-table-header attribute="inhoud" currentSort=sort}}
+{{sortable-table-header attribute="taal" currentSort=sort}}
+{{sortable-table-header attribute="titel" currentSort=sort}}
+{{sortable-table-header attribute="page" currentSort=sort}}
+{{sortable-table-header attribute="score" currentSort=sort}}
+
+          {{sortable-table-header attribute="realisatie" currentSort=sort}}
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "artikels.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='nummer' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='inhoud' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='taal' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='titel' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='page' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='score' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.realisatie tagName='td' itemRoute='rechtsgronden-artikel.show' configuredLabel='stringRep'}}
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'artikels')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "artikel")}}.
+    </div>
+  {{/if}}
+</div>

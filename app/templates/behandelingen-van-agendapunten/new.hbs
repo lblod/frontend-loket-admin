@@ -1,0 +1,46 @@
+{{!-- Page to create a new behandeling-van-agendapunt --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New behandeling-van-agendapunt')}}</h2>
+
+  {{!--
+    Actions to save new behandeling-van-agendapunt
+    or delete new behandeling-van-agendapunt.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new behandeling-van-agendapunt" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of behandeling-van-agendapunt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'openbaar'}}</td>
+        <td>{{handle-attribute model=model attribute='openbaar' classes='checkbox' editable=true boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'gevolg'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.gevolg}}</td>
+      </tr>
+      <tr>
+        <td>afgeleidUit</td>
+<td align='middle'>{{handle-attribute model=model attribute='afgeleidUit' editable=true}}</td>
+      </tr>
+      <tr><td>zitting</td><td align='middle'>{{edit-belongs-to relName=model.zitting relType="zitting"}}</td></tr>
+      <tr><td>vorigeBehandelingVanAgendapunt</td><td align='middle'>{{edit-belongs-to relName=model.vorigeBehandelingVanAgendapunt relType="behandeling-van-agendapunt"}}</td></tr>
+      <tr><td>onderwerp</td><td align='middle'>{{edit-belongs-to relName=model.onderwerp relType="agendapunt"}}</td></tr>
+      <tr><td>secretaris</td><td align='middle'>{{edit-belongs-to relName=model.secretaris relType="mandataris"}}</td></tr>
+      <tr><td>voorzitter</td><td align='middle'>{{edit-belongs-to relName=model.voorzitter relType="mandataris"}}</td></tr>
+      <tr><td>besluiten</td><td align='middle'>{{edit-has-many relName=model.besluiten relType="besluit"}}</td></tr>
+      <tr><td>aanwezigen</td><td align='middle'>{{edit-has-many relName=model.aanwezigen relType="mandataris"}}</td></tr>
+      <tr><td>stemmingen</td><td align='middle'>{{edit-has-many relName=model.stemmingen relType="stemming"}}</td></tr>
+    </tbody>
+  </table>
+</div>

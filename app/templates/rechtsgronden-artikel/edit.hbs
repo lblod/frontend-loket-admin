@@ -1,0 +1,41 @@
+{{!-- Page to edit rechtsgrond-artikel --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit rechtsgrond-artikel')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete rechtsgrond-artikel.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new rechtsgrond-artikel" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of rechtsgrond-artikel. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>buitenwerkingtreding</td>
+      <td align='middle'>{{handle-date model=changeset attribute='buitenwerkingtreding' editable=true}}</td>
+</tr>
+      <tr>
+      <td>inwerkingtreding</td>
+      <td align='middle'>{{handle-date model=changeset attribute='inwerkingtreding' editable=true}}</td>
+</tr>
+
+        <tr><td>rechtsgrondBesluit</td><td align='middle'>{{edit-belongs-to relName=changeset.rechtsgrondBesluit relType="rechtsgrond-besluit"}}</td></tr>
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

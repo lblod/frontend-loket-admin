@@ -1,0 +1,48 @@
+{{!-- Page to show details of dynamic-subformen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'dynamic-subform details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit dynamic-subform
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "dynamic-subformen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "dynamic-subformen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of dynamic-subform. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'key'}}</td>
+        {{handle-attribute model=model attribute='key' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'matchKind'}}</td>
+        {{handle-attribute model=model attribute='matchKind' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'value'}}</td>
+        {{handle-attribute model=model attribute='value' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'formNode'}}</td>
+       {{display-model-belongsto-relationship model=model.formNode itemRoute='form-nodes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

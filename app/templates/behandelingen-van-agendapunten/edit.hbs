@@ -1,0 +1,51 @@
+{{!-- Page to edit behandeling-van-agendapunt --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit behandeling-van-agendapunt')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete behandeling-van-agendapunt.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new behandeling-van-agendapunt" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of behandeling-van-agendapunt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'openbaar'}}</td>
+        <td>{{handle-attribute model=model attribute='openbaar' classes='checkbox' editable=true boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'gevolg'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.gevolg}}</td>
+      </tr>
+      <tr>
+      <td>afgeleidUit</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='afgeleidUit' editable=true}}</td>
+</tr>
+
+        <tr><td>zitting</td><td align='middle'>{{edit-belongs-to relName=changeset.zitting relType="zitting"}}</td></tr>
+      <tr><td>vorigeBehandelingVanAgendapunt</td><td align='middle'>{{edit-belongs-to relName=changeset.vorigeBehandelingVanAgendapunt relType="behandeling-van-agendapunt"}}</td></tr>
+      <tr><td>onderwerp</td><td align='middle'>{{edit-belongs-to relName=changeset.onderwerp relType="agendapunt"}}</td></tr>
+      <tr><td>secretaris</td><td align='middle'>{{edit-belongs-to relName=changeset.secretaris relType="mandataris"}}</td></tr>
+      <tr><td>voorzitter</td><td align='middle'>{{edit-belongs-to relName=changeset.voorzitter relType="mandataris"}}</td></tr>
+        <tr><td>besluiten</td><td align='middle'>{{edit-has-many relName=changeset.besluiten relType="besluit"}}</td></tr>
+      <tr><td>aanwezigen</td><td align='middle'>{{edit-has-many relName=changeset.aanwezigen relType="mandataris"}}</td></tr>
+      <tr><td>stemmingen</td><td align='middle'>{{edit-has-many relName=changeset.stemmingen relType="stemming"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

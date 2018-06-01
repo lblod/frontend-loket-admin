@@ -410,6 +410,176 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
+  this.route('agendas', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('agendapunten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('artikels', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('behandelingen-van-agendapunten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('besluiten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('rechtsgronden-besluit', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('rechtsgronden-artikel', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('stemmingen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('zittingen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('form-nodes', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('form-inputten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('dynamic-subformen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('inzending-voor-toezichten', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-inzending-types', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('besluit-types', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('tax-rates', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('form-solutionen', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
 });
 
 export default Router;

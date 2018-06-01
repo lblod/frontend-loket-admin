@@ -1,0 +1,60 @@
+{{!-- Page to show details of artikels --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'artikel details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit artikel
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "artikels" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "artikels.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of artikel. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'nummer'}}</td>
+        {{handle-attribute model=model attribute='nummer' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'inhoud'}}</td>
+        {{handle-attribute model=model attribute='inhoud' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'taal'}}</td>
+        {{handle-attribute model=model attribute='taal' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'titel'}}</td>
+        {{handle-attribute model=model attribute='titel' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'page'}}</td>
+        {{handle-attribute model=model attribute='page' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'score'}}</td>
+        {{handle-attribute model=model attribute='score' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'realisatie'}}</td>
+       {{display-model-belongsto-relationship model=model.realisatie itemRoute='rechtsgronden-artikel.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

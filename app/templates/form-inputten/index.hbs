@@ -1,0 +1,45 @@
+{{!-- Page to list form-inputten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'form-inputten')}}</h2>
+  <div class="actions">{{#link-to "form-inputten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="index" currentSort=sort}}
+{{sortable-table-header attribute="displayType" currentSort=sort}}
+{{sortable-table-header attribute="label" currentSort=sort}}
+{{sortable-table-header attribute="options" currentSort=sort}}
+{{sortable-table-header attribute="identifier" currentSort=sort}}
+
+          
+          {{sortable-table-header attribute="dynamicSubforms" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "form-inputten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='index' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='displayType' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='label' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='options' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='identifier' tagName='td' classes='properties__data'}}
+
+            {{display-model-hasmany-relationship   model=item.dynamicSubforms tagName='td' itemRoute='dynamic-subformen.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'form-inputten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "form-input")}}.
+    </div>
+  {{/if}}
+</div>

@@ -46,7 +46,10 @@
         <td>{{t 'created'}}</td>
         {{handle-date model=model attribute='created' tagName='td' classes='properties__data' timePicker=true}}
       </tr>
-
+      <tr>
+        <td class="properties__label">{{t 'download'}}</td>
+       {{display-model-belongsto-relationship model=model.download itemRoute='files.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
 
     </tbody>
   </table>

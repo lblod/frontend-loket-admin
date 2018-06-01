@@ -1,0 +1,80 @@
+{{!-- Page to show details of stemmingen --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'stemming details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit stemming
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "stemmingen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "stemmingen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of stemming. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'aantalOnthouders'}}</td>
+        {{handle-attribute model=model attribute='aantalOnthouders' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'aantalTegenstanders'}}</td>
+        {{handle-attribute model=model attribute='aantalTegenstanders' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'aantalVoorstanders'}}</td>
+        {{handle-attribute model=model attribute='aantalVoorstanders' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'geheim'}}</td>
+        <td>{{handle-attribute model=model attribute='geheim' classes='checkbox' boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'title'}}</td>
+        {{handle-attribute model=model attribute='title' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'gevolg'}}</td>
+        {{handle-attribute model=model attribute='gevolg' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'onderwerp'}}</td>
+        {{handle-attribute model=model attribute='onderwerp' tagName='td' classes='properties__data'}}
+      </tr>
+
+      <tr>
+        <td class="properties__label">{{t 'aanwezigen'}}</td>
+       {{display-model-hasmany-relationship   model=model.aanwezigen itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'onthouders'}}</td>
+       {{display-model-hasmany-relationship   model=model.onthouders itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'stemmers'}}</td>
+       {{display-model-hasmany-relationship   model=model.stemmers itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'tegenstanders'}}</td>
+       {{display-model-hasmany-relationship   model=model.tegenstanders itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'voorstanders'}}</td>
+       {{display-model-hasmany-relationship   model=model.voorstanders itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

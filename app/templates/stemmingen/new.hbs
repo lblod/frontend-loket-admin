@@ -1,0 +1,60 @@
+{{!-- Page to create a new stemming --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New stemming')}}</h2>
+
+  {{!--
+    Actions to save new stemming
+    or delete new stemming.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new stemming" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of stemming. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>aantalOnthouders</td>
+<td align='middle'>{{handle-attribute model=model attribute='aantalOnthouders' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>aantalTegenstanders</td>
+<td align='middle'>{{handle-attribute model=model attribute='aantalTegenstanders' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>aantalVoorstanders</td>
+<td align='middle'>{{handle-attribute model=model attribute='aantalVoorstanders' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'geheim'}}</td>
+        <td>{{handle-attribute model=model attribute='geheim' classes='checkbox' editable=true boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>title</td>
+<td align='middle'>{{handle-attribute model=model attribute='title' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'gevolg'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.gevolg}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'onderwerp'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.onderwerp}}</td>
+      </tr>
+      
+      <tr><td>aanwezigen</td><td align='middle'>{{edit-has-many relName=model.aanwezigen relType="mandataris"}}</td></tr>
+      <tr><td>onthouders</td><td align='middle'>{{edit-has-many relName=model.onthouders relType="mandataris"}}</td></tr>
+      <tr><td>stemmers</td><td align='middle'>{{edit-has-many relName=model.stemmers relType="mandataris"}}</td></tr>
+      <tr><td>tegenstanders</td><td align='middle'>{{edit-has-many relName=model.tegenstanders relType="mandataris"}}</td></tr>
+      <tr><td>voorstanders</td><td align='middle'>{{edit-has-many relName=model.voorstanders relType="mandataris"}}</td></tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,75 @@
+{{!-- Page to show details of behandelingen-van-agendapunten --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'behandeling-van-agendapunt details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit behandeling-van-agendapunt
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "behandelingen-van-agendapunten" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "behandelingen-van-agendapunten.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of behandeling-van-agendapunt. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'openbaar'}}</td>
+        <td>{{handle-attribute model=model attribute='openbaar' classes='checkbox' boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'gevolg'}}</td>
+        {{handle-attribute model=model attribute='gevolg' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'afgeleidUit'}}</td>
+        {{handle-attribute model=model attribute='afgeleidUit' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'zitting'}}</td>
+       {{display-model-belongsto-relationship model=model.zitting itemRoute='zittingen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'vorigeBehandelingVanAgendapunt'}}</td>
+       {{display-model-belongsto-relationship model=model.vorigeBehandelingVanAgendapunt itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'onderwerp'}}</td>
+       {{display-model-belongsto-relationship model=model.onderwerp itemRoute='agendapunten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'secretaris'}}</td>
+       {{display-model-belongsto-relationship model=model.secretaris itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'voorzitter'}}</td>
+       {{display-model-belongsto-relationship model=model.voorzitter itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'besluiten'}}</td>
+       {{display-model-hasmany-relationship   model=model.besluiten itemRoute='besluiten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'aanwezigen'}}</td>
+       {{display-model-hasmany-relationship   model=model.aanwezigen itemRoute='mandatarissen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'stemmingen'}}</td>
+       {{display-model-hasmany-relationship   model=model.stemmingen itemRoute='stemmingen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

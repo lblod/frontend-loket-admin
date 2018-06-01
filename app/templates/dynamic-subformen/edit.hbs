@@ -1,0 +1,45 @@
+{{!-- Page to edit dynamic-subform --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit dynamic-subform')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete dynamic-subform.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new dynamic-subform" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of dynamic-subform. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>key</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='key' editable=true}}</td>
+</tr>
+      <tr>
+      <td>matchKind</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='matchKind' editable=true}}</td>
+</tr>
+      <tr>
+      <td>value</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='value' editable=true}}</td>
+</tr>
+
+        <tr><td>formNode</td><td align='middle'>{{edit-belongs-to relName=changeset.formNode relType="form-node"}}</td></tr>
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

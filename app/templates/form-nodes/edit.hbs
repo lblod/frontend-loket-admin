@@ -1,0 +1,38 @@
+{{!-- Page to edit form-node --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit form-node')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete form-node.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new form-node" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of form-node. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>inputTypeMap</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='inputTypeMap' editable=true}}</td>
+</tr>
+
+        
+        <tr><td>children</td><td align='middle'>{{edit-has-many relName=changeset.children relType="form-input"}}</td></tr>
+      <tr><td>parents</td><td align='middle'>{{edit-has-many relName=changeset.parents relType="dynamic-subform"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

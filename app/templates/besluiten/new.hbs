@@ -1,0 +1,62 @@
+{{!-- Page to create a new besluit --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New besluit')}}</h2>
+
+  {{!--
+    Actions to save new besluit
+    or delete new besluit.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new besluit" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of besluit. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>beschrijving</td>
+<td align='middle'>{{handle-attribute model=model attribute='beschrijving' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>citeeropschrift</td>
+<td align='middle'>{{handle-attribute model=model attribute='citeeropschrift' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'motivering'}}</td>
+        <td align='middle'>{{edit-language-typed-string data=model.motivering}}</td>
+      </tr>
+      <tr>
+        <td>publicatiedatum</td>
+<td align='middle'>{{handle-date model=model attribute='publicatiedatum' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>inhoud</td>
+<td align='middle'>{{handle-attribute model=model attribute='inhoud' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>taal</td>
+<td align='middle'>{{handle-attribute model=model attribute='taal' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>titel</td>
+<td align='middle'>{{handle-attribute model=model attribute='titel' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>score</td>
+<td align='middle'>{{handle-attribute model=model attribute='score' editable=true}}</td>
+      </tr>
+      <tr><td>realisatie</td><td align='middle'>{{edit-belongs-to relName=model.realisatie relType="rechtsgrond-besluit"}}</td></tr>
+      <tr><td>volgendUitBehandelingVanAgendapunt</td><td align='middle'>{{edit-belongs-to relName=model.volgendUitBehandelingVanAgendapunt relType="behandeling-van-agendapunt"}}</td></tr>
+      <tr><td>afgeleidUitNotule</td><td align='middle'>{{edit-belongs-to relName=model.afgeleidUitNotule relType="editor-document"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

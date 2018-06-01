@@ -1,0 +1,55 @@
+{{!-- Page to list zittingen --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'zittingen')}}</h2>
+  <div class="actions">{{#link-to "zittingen.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="geplandeStart" currentSort=sort}}
+{{sortable-table-header attribute="gestartOpTijdstip" currentSort=sort}}
+{{sortable-table-header attribute="geeindigdOpTijdstip" currentSort=sort}}
+{{sortable-table-header attribute="opLocatie" currentSort=sort}}
+{{sortable-table-header attribute="afgeleidUit" currentSort=sort}}
+
+          {{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
+{{sortable-table-header attribute="secretaris" currentSort=sort}}
+{{sortable-table-header attribute="voorzitter" currentSort=sort}}
+{{sortable-table-header attribute="agenda" currentSort=sort}}
+{{sortable-table-header attribute="notulen" currentSort=sort}}
+          {{sortable-table-header attribute="behandeldeAgendapunten" currentSort=sort}}
+{{sortable-table-header attribute="aanwezigenBijStart" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "zittingen.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+        {{handle-date model=item attribute='geplandeStart' tagName='td' classes='properties__data' timePicker=true}}
+        {{handle-date model=item attribute='gestartOpTijdstip' tagName='td' classes='properties__data' timePicker=true}}
+        {{handle-date model=item attribute='geeindigdOpTijdstip' tagName='td' classes='properties__data' timePicker=true}}
+            {{handle-attribute model=item attribute='opLocatie' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='afgeleidUit' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.bestuursorgaan tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.secretaris tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.voorzitter tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.agenda tagName='td' itemRoute='agendas.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.notulen tagName='td' itemRoute='editor-documents.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.behandeldeAgendapunten tagName='td' itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.aanwezigenBijStart tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'zittingen')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "zitting")}}.
+    </div>
+  {{/if}}
+</div>

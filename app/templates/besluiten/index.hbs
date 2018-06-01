@@ -1,0 +1,55 @@
+{{!-- Page to list besluiten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'besluiten')}}</h2>
+  <div class="actions">{{#link-to "besluiten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="beschrijving" currentSort=sort}}
+{{sortable-table-header attribute="citeeropschrift" currentSort=sort}}
+{{sortable-table-header attribute="motivering" currentSort=sort}}
+{{sortable-table-header attribute="publicatiedatum" currentSort=sort}}
+{{sortable-table-header attribute="inhoud" currentSort=sort}}
+{{sortable-table-header attribute="taal" currentSort=sort}}
+{{sortable-table-header attribute="titel" currentSort=sort}}
+{{sortable-table-header attribute="score" currentSort=sort}}
+
+          {{sortable-table-header attribute="realisatie" currentSort=sort}}
+{{sortable-table-header attribute="volgendUitBehandelingVanAgendapunt" currentSort=sort}}
+{{sortable-table-header attribute="afgeleidUitNotule" currentSort=sort}}
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "besluiten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='beschrijving' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='citeeropschrift' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='motivering' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='publicatiedatum' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='inhoud' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='taal' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='titel' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='score' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.realisatie tagName='td' itemRoute='rechtsgronden-besluit.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.volgendUitBehandelingVanAgendapunt tagName='td' itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.afgeleidUitNotule tagName='td' itemRoute='editor-documents.show' configuredLabel='stringRep'}}
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'besluiten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "besluit")}}.
+    </div>
+  {{/if}}
+</div>

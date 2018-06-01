@@ -1,0 +1,39 @@
+{{!-- Page to list rechtsgronden-besluit --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'rechtsgronden-besluit')}}</h2>
+  <div class="actions">{{#link-to "rechtsgronden-besluit.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="buitenwerkingtreding" currentSort=sort}}
+{{sortable-table-header attribute="inwerkingtreding" currentSort=sort}}
+
+          {{sortable-table-header attribute="bestuursorgaan" currentSort=sort}}
+          {{sortable-table-header attribute="rechtsgrondenArtikel" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "rechtsgronden-besluit.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+        {{handle-date model=item attribute='buitenwerkingtreding' tagName='td' classes='properties__data'}}
+        {{handle-date model=item attribute='inwerkingtreding' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.bestuursorgaan tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.rechtsgrondenArtikel tagName='td' itemRoute='rechtsgronden-artikel.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'rechtsgronden-besluit')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "rechtsgrond-besluit")}}.
+    </div>
+  {{/if}}
+</div>

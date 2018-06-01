@@ -1,6 +1,7 @@
 import Model from 'ember-data/model';
 import { collect } from '@ember/object/computed';
 import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   // A string representation of this model, based on its attributes.
@@ -11,5 +12,6 @@ export default Model.extend({
   format: attr(),
   size: attr(),
   extension: attr(),
-  created: attr('datetime')
+  created: attr('datetime'),
+  download: belongsTo('file', { inverse: null })
 });

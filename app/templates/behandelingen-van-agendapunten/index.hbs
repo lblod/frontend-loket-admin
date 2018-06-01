@@ -1,0 +1,53 @@
+{{!-- Page to list behandelingen-van-agendapunten --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'behandelingen-van-agendapunten')}}</h2>
+  <div class="actions">{{#link-to "behandelingen-van-agendapunten.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="openbaar" currentSort=sort}}
+{{sortable-table-header attribute="gevolg" currentSort=sort}}
+{{sortable-table-header attribute="afgeleidUit" currentSort=sort}}
+
+          {{sortable-table-header attribute="zitting" currentSort=sort}}
+{{sortable-table-header attribute="vorigeBehandelingVanAgendapunt" currentSort=sort}}
+{{sortable-table-header attribute="onderwerp" currentSort=sort}}
+{{sortable-table-header attribute="secretaris" currentSort=sort}}
+{{sortable-table-header attribute="voorzitter" currentSort=sort}}
+          {{sortable-table-header attribute="besluiten" currentSort=sort}}
+{{sortable-table-header attribute="aanwezigen" currentSort=sort}}
+{{sortable-table-header attribute="stemmingen" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "behandelingen-van-agendapunten.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+        <td>{{handle-attribute model=item attribute='openbaar' classes='checkbox' boolean=true}}</td>
+            {{handle-attribute model=item attribute='gevolg' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='afgeleidUit' tagName='td' classes='properties__data'}}
+            {{display-model-belongsto-relationship model=item.zitting tagName='td' itemRoute='zittingen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.vorigeBehandelingVanAgendapunt tagName='td' itemRoute='behandelingen-van-agendapunten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.onderwerp tagName='td' itemRoute='agendapunten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.secretaris tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.voorzitter tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.besluiten tagName='td' itemRoute='besluiten.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.aanwezigen tagName='td' itemRoute='mandatarissen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.stemmingen tagName='td' itemRoute='stemmingen.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'behandelingen-van-agendapunten')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "behandeling-van-agendapunt")}}.
+    </div>
+  {{/if}}
+</div>

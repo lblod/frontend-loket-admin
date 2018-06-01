@@ -13,7 +13,7 @@
 {{sortable-table-header attribute="extension" currentSort=sort}}
 {{sortable-table-header attribute="created" currentSort=sort}}
 
-          
+          {{sortable-table-header attribute="download" currentSort=sort}}
           
         </tr>
       </thead>
@@ -26,7 +26,7 @@
             {{handle-attribute model=item attribute='size' tagName='td' classes='properties__data'}}
             {{handle-attribute model=item attribute='extension' tagName='td' classes='properties__data'}}
         {{handle-date model=item attribute='created' tagName='td' classes='properties__data' timePicker=true}}
-
+            {{display-model-belongsto-relationship model=item.download tagName='td' itemRoute='files.show' configuredLabel='stringRep'}}
 
           {{/link-to}}
         {{/each}}

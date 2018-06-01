@@ -1,0 +1,49 @@
+{{!-- Page to edit tax-rate --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit tax-rate')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete tax-rate.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new tax-rate" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of tax-rate. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>amount</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='amount' editable=true}}</td>
+</tr>
+      <tr>
+      <td>unit</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='unit' editable=true}}</td>
+</tr>
+      <tr>
+      <td>base</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='base' editable=true}}</td>
+</tr>
+      <tr>
+      <td>remark</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='remark' editable=true}}</td>
+</tr>
+
+        
+        
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

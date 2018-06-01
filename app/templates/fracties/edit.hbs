@@ -28,8 +28,8 @@
       <td align='middle'>{{handle-attribute model=changeset attribute='naam' editable=true}}</td>
 </tr>
 
-        
-        
+        <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+        <tr><td>bestuursorganenInTijd</td><td align='middle'>{{edit-has-many relName=changeset.bestuursorganenInTijd relType="bestuursorgaan"}}</td></tr>
 
     </tbody>
   </table>

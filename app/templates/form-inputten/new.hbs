@@ -1,0 +1,48 @@
+{{!-- Page to create a new form-input --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New form-input')}}</h2>
+
+  {{!--
+    Actions to save new form-input
+    or delete new form-input.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new form-input" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of form-input. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>index</td>
+<td align='middle'>{{handle-attribute model=model attribute='index' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>displayType</td>
+<td align='middle'>{{handle-attribute model=model attribute='displayType' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>options</td>
+<td align='middle'>{{handle-attribute model=model attribute='options' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>identifier</td>
+<td align='middle'>{{handle-attribute model=model attribute='identifier' editable=true}}</td>
+      </tr>
+      
+      <tr><td>dynamicSubforms</td><td align='middle'>{{edit-has-many relName=model.dynamicSubforms relType="dynamic-subform"}}</td></tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,44 @@
+{{!-- Page to show details of rechtsgronden-artikel --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'rechtsgrond-artikel details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit rechtsgrond-artikel
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "rechtsgronden-artikel" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "rechtsgronden-artikel.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of rechtsgrond-artikel. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'buitenwerkingtreding'}}</td>
+        {{handle-date model=model attribute='buitenwerkingtreding' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'inwerkingtreding'}}</td>
+        {{handle-date model=model attribute='inwerkingtreding' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'rechtsgrondBesluit'}}</td>
+       {{display-model-belongsto-relationship model=model.rechtsgrondBesluit itemRoute='rechtsgronden-besluit.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,131 @@
+{{!-- Page to show details of inzending-voor-toezichten --}}
+<div class="details">
+  <h2 class="title">{{t (humanize 'inzending-voor-toezicht details')}}</h2>
+
+  {{!--
+    Actions to go back to the list-view or edit inzending-voor-toezicht
+    if it's an editable application.
+  --}}
+  <div class="actions">
+    {{#link-to "inzending-voor-toezichten" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "inzending-voor-toezichten.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+  </div>
+
+  {{!-- Table to show details of inzending-voor-toezicht. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>{{t "Attribute"}}</th>
+        <th>{{t "Data"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating row for id --}}
+      <tr>
+        <td class="properties__label">{{t "id"}}</td>
+        {{handle-attribute model=model attribute='id' tagName='td' classes='properties__data'}}
+      </tr>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>{{t 'created'}}</td>
+        {{handle-date model=model attribute='created' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'modified'}}</td>
+        {{handle-date model=model attribute='modified' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'sentDate'}}</td>
+        {{handle-date model=model attribute='sentDate' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'description'}}</td>
+        {{handle-attribute model=model attribute='description' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'remark'}}</td>
+        {{handle-attribute model=model attribute='remark' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'temporalCoverage'}}</td>
+        {{handle-attribute model=model attribute='temporalCoverage' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'businessIdentifier'}}</td>
+        {{handle-attribute model=model attribute='businessIdentifier' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'businessName'}}</td>
+        {{handle-attribute model=model attribute='businessName' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'nomenclature'}}</td>
+        {{handle-attribute model=model attribute='nomenclature' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'dateOfEntryIntoForce'}}</td>
+        {{handle-date model=model attribute='dateOfEntryIntoForce' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'endDate'}}</td>
+        {{handle-date model=model attribute='endDate' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'isModification'}}</td>
+        <td>{{handle-attribute model=model attribute='isModification' classes='checkbox' boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'hasExtraTaxRates'}}</td>
+        <td>{{handle-attribute model=model attribute='hasExtraTaxRates' classes='checkbox' boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'agendaItemCount'}}</td>
+        {{handle-attribute model=model attribute='agendaItemCount' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td>{{t 'sessionDate'}}</td>
+        {{handle-date model=model attribute='sessionDate' tagName='td' classes='properties__data' timePicker=true}}
+      </tr>
+      <tr>
+        <td>{{t 'title'}}</td>
+        {{handle-attribute model=model attribute='title' tagName='td' classes='properties__data'}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'status'}}</td>
+       {{display-model-belongsto-relationship model=model.status itemRoute='document-statuses.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'lastModifier'}}</td>
+       {{display-model-belongsto-relationship model=model.lastModifier itemRoute='gebruikers.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuurseenheid'}}</td>
+       {{display-model-belongsto-relationship model=model.bestuurseenheid itemRoute='bestuurseenheden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'formSolution'}}</td>
+       {{display-model-belongsto-relationship model=model.formSolution itemRoute='form-solutionen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'inzendingType'}}</td>
+       {{display-model-belongsto-relationship model=model.inzendingType itemRoute='toezicht-inzending-types.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'besluitType'}}</td>
+       {{display-model-belongsto-relationship model=model.besluitType itemRoute='besluit-types.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuursorgaan'}}</td>
+       {{display-model-belongsto-relationship model=model.bestuursorgaan itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'files'}}</td>
+       {{display-model-hasmany-relationship   model=model.files itemRoute='files.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'taxRates'}}</td>
+       {{display-model-hasmany-relationship   model=model.taxRates itemRoute='tax-rates.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+    </tbody>
+  </table>
+</div>

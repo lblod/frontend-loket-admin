@@ -1,0 +1,40 @@
+{{!-- Page to create a new dynamic-subform --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New dynamic-subform')}}</h2>
+
+  {{!--
+    Actions to save new dynamic-subform
+    or delete new dynamic-subform.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new dynamic-subform" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of dynamic-subform. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>key</td>
+<td align='middle'>{{handle-attribute model=model attribute='key' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>matchKind</td>
+<td align='middle'>{{handle-attribute model=model attribute='matchKind' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>value</td>
+<td align='middle'>{{handle-attribute model=model attribute='value' editable=true}}</td>
+      </tr>
+      <tr><td>formNode</td><td align='middle'>{{edit-belongs-to relName=model.formNode relType="form-node"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

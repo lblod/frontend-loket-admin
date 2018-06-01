@@ -9,8 +9,8 @@
           <th class="properties__label">id</th>
           {{sortable-table-header attribute="naam" currentSort=sort}}
 
-          
-          
+          {{sortable-table-header attribute="bestuurseenheid" currentSort=sort}}
+          {{sortable-table-header attribute="bestuursorganenInTijd" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -18,8 +18,8 @@
           {{#link-to "fracties.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='naam' tagName='td' classes='properties__data'}}
-
-
+            {{display-model-belongsto-relationship model=item.bestuurseenheid tagName='td' itemRoute='bestuurseenheden.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.bestuursorganenInTijd tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

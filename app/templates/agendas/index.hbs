@@ -1,0 +1,37 @@
+{{!-- Page to list agendas --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'agendas')}}</h2>
+  <div class="actions">{{#link-to "agendas.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          
+
+          {{sortable-table-header attribute="zitting" currentSort=sort}}
+          {{sortable-table-header attribute="agendapunten" currentSort=sort}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "agendas.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+
+            {{display-model-belongsto-relationship model=item.zitting tagName='td' itemRoute='zittingen.show' configuredLabel='stringRep'}}
+            {{display-model-hasmany-relationship   model=item.agendapunten tagName='td' itemRoute='agendapunten.show' configuredLabel='stringRep'}}
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'agendas')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "agenda")}}.
+    </div>
+  {{/if}}
+</div>

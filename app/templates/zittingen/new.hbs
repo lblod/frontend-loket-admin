@@ -1,0 +1,53 @@
+{{!-- Page to create a new zitting --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New zitting')}}</h2>
+
+  {{!--
+    Actions to save new zitting
+    or delete new zitting.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new zitting" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of zitting. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>geplandeStart</td>
+<td align='middle'>{{handle-date model=model attribute='geplandeStart' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>gestartOpTijdstip</td>
+<td align='middle'>{{handle-date model=model attribute='gestartOpTijdstip' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>geeindigdOpTijdstip</td>
+<td align='middle'>{{handle-date model=model attribute='geeindigdOpTijdstip' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>opLocatie</td>
+<td align='middle'>{{handle-attribute model=model attribute='opLocatie' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>afgeleidUit</td>
+<td align='middle'>{{handle-attribute model=model attribute='afgeleidUit' editable=true}}</td>
+      </tr>
+      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=model.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>secretaris</td><td align='middle'>{{edit-belongs-to relName=model.secretaris relType="mandataris"}}</td></tr>
+      <tr><td>voorzitter</td><td align='middle'>{{edit-belongs-to relName=model.voorzitter relType="mandataris"}}</td></tr>
+      <tr><td>agenda</td><td align='middle'>{{edit-belongs-to relName=model.agenda relType="agenda"}}</td></tr>
+      <tr><td>notulen</td><td align='middle'>{{edit-belongs-to relName=model.notulen relType="editor-document"}}</td></tr>
+      <tr><td>behandeldeAgendapunten</td><td align='middle'>{{edit-has-many relName=model.behandeldeAgendapunten relType="behandeling-van-agendapunt"}}</td></tr>
+      <tr><td>aanwezigenBijStart</td><td align='middle'>{{edit-has-many relName=model.aanwezigenBijStart relType="mandataris"}}</td></tr>
+    </tbody>
+  </table>
+</div>

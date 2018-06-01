@@ -1,0 +1,58 @@
+{{!-- Page to edit zitting --}}
+{{#with (changeset model skipValidate=true) as |changeset|}}
+<div class="edit">
+  <h2 class="title">{{t (humanize 'Edit zitting')}}</h2>
+
+  {{!--
+    Actions to save or cancel changes;
+    or delete zitting.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new zitting" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
+    <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
+  </div>
+
+  {{!-- Table to show details of zitting. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+      <td>geplandeStart</td>
+      <td align='middle'>{{handle-date model=changeset attribute='geplandeStart' editable=true timePicker=true}}</td>
+</tr>
+      <tr>
+      <td>gestartOpTijdstip</td>
+      <td align='middle'>{{handle-date model=changeset attribute='gestartOpTijdstip' editable=true timePicker=true}}</td>
+</tr>
+      <tr>
+      <td>geeindigdOpTijdstip</td>
+      <td align='middle'>{{handle-date model=changeset attribute='geeindigdOpTijdstip' editable=true timePicker=true}}</td>
+</tr>
+      <tr>
+      <td>opLocatie</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='opLocatie' editable=true}}</td>
+</tr>
+      <tr>
+      <td>afgeleidUit</td>
+      <td align='middle'>{{handle-attribute model=changeset attribute='afgeleidUit' editable=true}}</td>
+</tr>
+
+        <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>secretaris</td><td align='middle'>{{edit-belongs-to relName=changeset.secretaris relType="mandataris"}}</td></tr>
+      <tr><td>voorzitter</td><td align='middle'>{{edit-belongs-to relName=changeset.voorzitter relType="mandataris"}}</td></tr>
+      <tr><td>agenda</td><td align='middle'>{{edit-belongs-to relName=changeset.agenda relType="agenda"}}</td></tr>
+      <tr><td>notulen</td><td align='middle'>{{edit-belongs-to relName=changeset.notulen relType="editor-document"}}</td></tr>
+        <tr><td>behandeldeAgendapunten</td><td align='middle'>{{edit-has-many relName=changeset.behandeldeAgendapunten relType="behandeling-van-agendapunt"}}</td></tr>
+      <tr><td>aanwezigenBijStart</td><td align='middle'>{{edit-has-many relName=changeset.aanwezigenBijStart relType="mandataris"}}</td></tr>
+
+    </tbody>
+  </table>
+</div>
+{{/with}}

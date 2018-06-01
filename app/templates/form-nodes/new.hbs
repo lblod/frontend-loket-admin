@@ -1,0 +1,33 @@
+{{!-- Page to create a new form-node --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New form-node')}}</h2>
+
+  {{!--
+    Actions to save new form-node
+    or delete new form-node.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new form-node" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of form-node. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>inputTypeMap</td>
+<td align='middle'>{{handle-attribute model=model attribute='inputTypeMap' editable=true}}</td>
+      </tr>
+      
+      <tr><td>children</td><td align='middle'>{{edit-has-many relName=model.children relType="form-input"}}</td></tr>
+      <tr><td>parents</td><td align='middle'>{{edit-has-many relName=model.parents relType="dynamic-subform"}}</td></tr>
+    </tbody>
+  </table>
+</div>
