@@ -10,8 +10,7 @@
           {{sortable-table-header attribute="aantalHouders" currentSort=sort}}
 
           {{sortable-table-header attribute="bestuursfunctie" currentSort=sort}}
-{{sortable-table-header attribute="bevatIn" currentSort=sort}}
-          
+          {{sortable-table-header attribute="bevatIn" currentSort=sort}}
         </tr>
       </thead>
       <tbody>
@@ -20,8 +19,7 @@
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='aantalHouders' tagName='td' classes='properties__data'}}
             {{display-model-belongsto-relationship model=item.bestuursfunctie tagName='td' itemRoute='bestuursfunctie-codes.show' configuredLabel='stringRep'}}
-            {{display-model-belongsto-relationship model=item.bevatIn tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
-
+            {{display-model-hasmany-relationship   model=item.bevatIn tagName='td' itemRoute='bestuursorganen.show' configuredLabel='stringRep'}}
           {{/link-to}}
         {{/each}}
       </tbody>

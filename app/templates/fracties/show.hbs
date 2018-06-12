@@ -35,6 +35,10 @@
        {{display-model-belongsto-relationship model=model.bestuurseenheid itemRoute='bestuurseenheden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
       <tr>
+        <td class="properties__label">{{t 'fractietype'}}</td>
+       {{display-model-belongsto-relationship model=model.fractietype itemRoute='fractietypes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
         <td class="properties__label">{{t 'bestuursorganenInTijd'}}</td>
        {{display-model-hasmany-relationship   model=model.bestuursorganenInTijd itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>

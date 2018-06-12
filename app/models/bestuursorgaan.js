@@ -11,7 +11,7 @@ export default Model.extend({
   naam: attr(),
   bindingEinde: attr('date'),
   bindingStart: attr('date'),
-  bestuurseenheid: belongsTo('bestuurseenheid', { inverse: 'bestuursorgaan' }),
+  bestuurseenheid: belongsTo('bestuurseenheid', { inverse: 'bestuursorganen' }),
   classificatie: belongsTo('bestuursorgaan-classificatie-code', { inverse: null }),
   isTijdsspecialisatieVan: belongsTo('bestuursorgaan', { inverse: 'heeftTijdsspecialisaties' }),
   wordtSamengesteldDoor: belongsTo('rechtstreekse-verkiezing', { inverse: 'steltSamen' }),

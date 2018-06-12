@@ -29,12 +29,12 @@
 </tr>
 
         <tr><td>werkingsgebied</td><td align='middle'>{{edit-belongs-to relName=changeset.werkingsgebied relType="werkingsgebied"}}</td></tr>
-      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=changeset.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
       <tr><td>classificatie</td><td align='middle'>{{edit-belongs-to relName=changeset.classificatie relType="bestuurseenheid-classificatie-code"}}</td></tr>
       <tr><td>primaireSite</td><td align='middle'>{{edit-belongs-to relName=changeset.primaireSite relType="vestiging"}}</td></tr>
       <tr><td>politiezone</td><td align='middle'>{{edit-belongs-to relName=changeset.politiezone relType="organisatie"}}</td></tr>
         <tr><td>contactinfo</td><td align='middle'>{{edit-has-many relName=changeset.contactinfo relType="contact-punt"}}</td></tr>
       <tr><td>posities</td><td align='middle'>{{edit-has-many relName=changeset.posities relType="positie"}}</td></tr>
+      <tr><td>bestuursorganen</td><td align='middle'>{{edit-has-many relName=changeset.bestuursorganen relType="bestuursorgaan"}}</td></tr>
 
     </tbody>
   </table>

@@ -35,10 +35,6 @@
        {{display-model-belongsto-relationship model=model.werkingsgebied itemRoute='werkingsgebieden.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
       <tr>
-        <td class="properties__label">{{t 'bestuursorgaan'}}</td>
-       {{display-model-belongsto-relationship model=model.bestuursorgaan itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
-      </tr>
-      <tr>
         <td class="properties__label">{{t 'classificatie'}}</td>
        {{display-model-belongsto-relationship model=model.classificatie itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
@@ -57,6 +53,10 @@
       <tr>
         <td class="properties__label">{{t 'posities'}}</td>
        {{display-model-hasmany-relationship   model=model.posities itemRoute='posities.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+      </tr>
+      <tr>
+        <td class="properties__label">{{t 'bestuursorganen'}}</td>
+       {{display-model-hasmany-relationship   model=model.bestuursorganen itemRoute='bestuursorganen.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
     </tbody>
   </table>

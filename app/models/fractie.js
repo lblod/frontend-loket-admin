@@ -10,5 +10,6 @@ export default Model.extend({
 
   naam: attr(),
   bestuurseenheid: belongsTo('bestuurseenheid', { inverse: null }),
+  fractietype: belongsTo('fractietype', { inverse: null }),
   bestuursorganenInTijd: hasMany('bestuursorgaan', { inverse: null })
 });

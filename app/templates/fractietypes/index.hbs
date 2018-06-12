@@ -1,0 +1,39 @@
+{{!-- Page to list fractietypes --}}
+<div class="content">
+  <h2 class="title">{{t (humanize 'fractietypes')}}</h2>
+  <div class="actions">{{#link-to "fractietypes.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  {{#if model}}
+    <table>
+      <thead>
+        <tr>
+          <th class="properties__label">id</th>
+          {{sortable-table-header attribute="label" currentSort=sort}}
+{{sortable-table-header attribute="scopeNote" currentSort=sort}}
+
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |item|}}
+          {{#link-to "fractietypes.show" item tagName='tr' }}
+              <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
+            {{handle-attribute model=item attribute='label' tagName='td' classes='properties__data'}}
+            {{handle-attribute model=item attribute='scopeNote' tagName='td' classes='properties__data'}}
+
+
+          {{/link-to}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if model.meta.pagination}}
+      {{pagination-component page=page numberOfItems=model.length total=model.meta.count links=model.meta.pagination}}
+    {{/if}}
+  {{else}}
+    <div class="empty">
+      No {{t (humanize 'fractietypes')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "fractietype")}}.
+    </div>
+  {{/if}}
+</div>

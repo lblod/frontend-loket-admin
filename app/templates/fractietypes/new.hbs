@@ -1,0 +1,36 @@
+{{!-- Page to create a new fractietype --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New fractietype')}}</h2>
+
+  {{!--
+    Actions to save new fractietype
+    or delete new fractietype.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new fractietype" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of fractietype. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>label</td>
+<td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>scopeNote</td>
+<td align='middle'>{{handle-attribute model=model attribute='scopeNote' editable=true}}</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
