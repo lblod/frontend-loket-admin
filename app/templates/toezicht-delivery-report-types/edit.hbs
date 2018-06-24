@@ -1,19 +1,19 @@
-{{!-- Page to edit besluit-type --}}
+{{!-- Page to edit toezicht-delivery-report-type --}}
 {{#with (changeset model skipValidate=true) as |changeset|}}
 <div class="edit">
-  <h2 class="title">{{t (humanize 'Edit besluit-type')}}</h2>
+  <h2 class="title">{{t (humanize 'Edit toezicht-delivery-report-type')}}</h2>
 
   {{!--
     Actions to save or cancel changes;
-    or delete besluit-type.
+    or delete toezicht-delivery-report-type.
   --}}
   <div class="actions">
-    <button type="button" class="btn save" title="Save new besluit-type" {{action 'save' changeset model}}>Save</button>
+    <button type="button" class="btn save" title="Save new toezicht-delivery-report-type" {{action 'save' changeset model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' changeset model}}>Cancel</button>
     <button type="button" class="btn delete" title="Delete this item" {{action 'delete' changeset model}}>Delete</button>
   </div>
 
-  {{!-- Table to show details of besluit-type. --}}
+  {{!-- Table to show details of toezicht-delivery-report-type. --}}
   <table>
     <thead>
       <tr>
@@ -29,7 +29,7 @@
 </tr>
 
         
-        <tr><td>decidableBy</td><td align='middle'>{{edit-has-many relName=changeset.decidableBy relType="bestuurseenheid-classificatie-code"}}</td></tr>
+        
 
     </tbody>
   </table>

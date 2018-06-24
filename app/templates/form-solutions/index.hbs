@@ -1,7 +1,7 @@
-{{!-- Page to list form-solutionen --}}
+{{!-- Page to list form-solutions --}}
 <div class="content">
-  <h2 class="title">{{t (humanize 'form-solutionen')}}</h2>
-  <div class="actions">{{#link-to "form-solutionen.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  <h2 class="title">{{t (humanize 'form-solutions')}}</h2>
+  <div class="actions">{{#link-to "form-solutions.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
   {{#if model}}
     <table>
       <thead>
@@ -16,11 +16,11 @@
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{#link-to "form-solutionen.show" item tagName='tr' }}
+          {{#link-to "form-solutions.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='hasOwner' tagName='td' classes='properties__data'}}
             {{display-model-belongsto-relationship model=item.formNode tagName='td' itemRoute='form-nodes.show' configuredLabel='stringRep'}}
-            {{display-model-belongsto-relationship model=item.inzendingVoorToezicht tagName='td' itemRoute='inzending-voor-toezichten.show' configuredLabel='stringRep'}}
+            {{display-model-belongsto-relationship model=item.inzendingVoorToezicht tagName='td' itemRoute='inzendingen-voor-toezicht.show' configuredLabel='stringRep'}}
 
           {{/link-to}}
         {{/each}}
@@ -32,7 +32,7 @@
     {{/if}}
   {{else}}
     <div class="empty">
-      No {{t (humanize 'form-solutionen')}} in the database.
+      No {{t (humanize 'form-solutions')}} in the database.
       Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "form-solution")}}.
     </div>
   {{/if}}

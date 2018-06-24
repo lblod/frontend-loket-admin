@@ -1,0 +1,33 @@
+{{!-- Page to create a new form-solution --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New form-solution')}}</h2>
+
+  {{!--
+    Actions to save new form-solution
+    or delete new form-solution.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new form-solution" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of form-solution. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>hasOwner</td>
+<td align='middle'>{{handle-attribute model=model attribute='hasOwner' editable=true}}</td>
+      </tr>
+      <tr><td>formNode</td><td align='middle'>{{edit-belongs-to relName=model.formNode relType="form-node"}}</td></tr>
+      <tr><td>inzendingVoorToezicht</td><td align='middle'>{{edit-belongs-to relName=model.inzendingVoorToezicht relType="inzending-voor-toezicht"}}</td></tr>
+      
+    </tbody>
+  </table>
+</div>

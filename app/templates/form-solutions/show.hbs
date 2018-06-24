@@ -1,4 +1,4 @@
-{{!-- Page to show details of form-solutionen --}}
+{{!-- Page to show details of form-solutions --}}
 <div class="details">
   <h2 class="title">{{t (humanize 'form-solution details')}}</h2>
 
@@ -7,8 +7,8 @@
     if it's an editable application.
   --}}
   <div class="actions">
-    {{#link-to "form-solutionen" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
-    {{#link-to "form-solutionen.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
+    {{#link-to "form-solutions" class="btn back" title="Return to list" tagName='button'}}Return to the list{{/link-to}}
+    {{#link-to "form-solutions.edit" model class="btn edit" title="Edit this item" tagName="button"}}Edit{{/link-to}}
   </div>
 
   {{!-- Table to show details of form-solution. --}}
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td class="properties__label">{{t 'inzendingVoorToezicht'}}</td>
-       {{display-model-belongsto-relationship model=model.inzendingVoorToezicht itemRoute='inzending-voor-toezichten.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
+       {{display-model-belongsto-relationship model=model.inzendingVoorToezicht itemRoute='inzendingen-voor-toezicht.show' configuredLabel='stringRep' tagName="td" classes="properties__data"}}
       </tr>
 
     </tbody>

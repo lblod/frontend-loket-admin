@@ -1,0 +1,121 @@
+{{!-- Page to create a new inzending-voor-toezicht --}}
+<div class="new">
+  <h2 class="title">{{t (humanize 'New inzending-voor-toezicht')}}</h2>
+
+  {{!--
+    Actions to save new inzending-voor-toezicht
+    or delete new inzending-voor-toezicht.
+  --}}
+  <div class="actions">
+    <button type="button" class="btn save" title="Save new inzending-voor-toezicht" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
+  </div>
+
+  {{!-- Table to show details of inzending-voor-toezicht. --}}
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{!-- Creating rows for attributes depending on the type of property --}}
+            <tr>
+        <td>created</td>
+<td align='middle'>{{handle-date model=model attribute='created' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>modified</td>
+<td align='middle'>{{handle-date model=model attribute='modified' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>sentDate</td>
+<td align='middle'>{{handle-date model=model attribute='sentDate' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>description</td>
+<td align='middle'>{{handle-attribute model=model attribute='description' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>remark</td>
+<td align='middle'>{{handle-attribute model=model attribute='remark' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>temporalCoverage</td>
+<td align='middle'>{{handle-attribute model=model attribute='temporalCoverage' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>businessIdentifier</td>
+<td align='middle'>{{handle-attribute model=model attribute='businessIdentifier' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>businessName</td>
+<td align='middle'>{{handle-attribute model=model attribute='businessName' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>dateOfEntryIntoForce</td>
+<td align='middle'>{{handle-date model=model attribute='dateOfEntryIntoForce' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>endDate</td>
+<td align='middle'>{{handle-date model=model attribute='endDate' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>{{t 'hasExtraTaxRates'}}</td>
+        <td>{{handle-attribute model=model attribute='hasExtraTaxRates' classes='checkbox' editable=true boolean=true}}</td>
+      </tr>
+      <tr>
+        <td>agendaItemCount</td>
+<td align='middle'>{{handle-attribute model=model attribute='agendaItemCount' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>sessionDate</td>
+<td align='middle'>{{handle-date model=model attribute='sessionDate' editable=true timePicker=true}}</td>
+      </tr>
+      <tr>
+        <td>title</td>
+<td align='middle'>{{handle-attribute model=model attribute='title' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>administrationType</td>
+<td align='middle'>{{handle-attribute model=model attribute='administrationType' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>administrationName</td>
+<td align='middle'>{{handle-attribute model=model attribute='administrationName' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>decisionDateOtherAdministration</td>
+<td align='middle'>{{handle-date model=model attribute='decisionDateOtherAdministration' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>decisionSummary</td>
+<td align='middle'>{{handle-attribute model=model attribute='decisionSummary' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>dateHandover</td>
+<td align='middle'>{{handle-date model=model attribute='dateHandover' editable=true}}</td>
+      </tr>
+      <tr>
+        <td>text</td>
+<td align='middle'>{{handle-attribute model=model attribute='text' editable=true}}</td>
+      </tr>
+      <tr><td>status</td><td align='middle'>{{edit-belongs-to relName=model.status relType="document-status"}}</td></tr>
+      <tr><td>lastModifier</td><td align='middle'>{{edit-belongs-to relName=model.lastModifier relType="gebruiker"}}</td></tr>
+      <tr><td>bestuurseenheid</td><td align='middle'>{{edit-belongs-to relName=model.bestuurseenheid relType="bestuurseenheid"}}</td></tr>
+      <tr><td>formSolution</td><td align='middle'>{{edit-belongs-to relName=model.formSolution relType="form-solution"}}</td></tr>
+      <tr><td>inzendingType</td><td align='middle'>{{edit-belongs-to relName=model.inzendingType relType="toezicht-inzending-type"}}</td></tr>
+      <tr><td>besluitType</td><td align='middle'>{{edit-belongs-to relName=model.besluitType relType="besluit-type"}}</td></tr>
+      <tr><td>bestuursorgaan</td><td align='middle'>{{edit-belongs-to relName=model.bestuursorgaan relType="bestuursorgaan"}}</td></tr>
+      <tr><td>authenticityType</td><td align='middle'>{{edit-belongs-to relName=model.authenticityType relType="toezicht-document-authenticity-type"}}</td></tr>
+      <tr><td>accountAcceptanceStatus</td><td align='middle'>{{edit-belongs-to relName=model.accountAcceptanceStatus relType="toezicht-account-acceptance-status"}}</td></tr>
+      <tr><td>deliveryReportType</td><td align='middle'>{{edit-belongs-to relName=model.deliveryReportType relType="toezicht-delivery-report-type"}}</td></tr>
+      <tr><td>fiscalPeriod</td><td align='middle'>{{edit-belongs-to relName=model.fiscalPeriod relType="toezicht-fiscal-period"}}</td></tr>
+      <tr><td>nomenclature</td><td align='middle'>{{edit-belongs-to relName=model.nomenclature relType="toezicht-nomenclature"}}</td></tr>
+      <tr><td>taxType</td><td align='middle'>{{edit-belongs-to relName=model.taxType relType="toezicht-tax-type"}}</td></tr>
+      <tr><td>files</td><td align='middle'>{{edit-has-many relName=model.files relType="file"}}</td></tr>
+      <tr><td>taxRates</td><td align='middle'>{{edit-has-many relName=model.taxRates relType="tax-rate"}}</td></tr>
+    </tbody>
+  </table>
+</div>

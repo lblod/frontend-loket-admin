@@ -530,7 +530,6 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
-  this.route('inzending-voor-toezichten');
   this.route('toezicht-inzending-types', function() {
     this.route('show', {
       path: ':id'
@@ -561,7 +560,7 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
-  this.route('form-solutionen', function() {
+  this.route('fractietypes', function() {
     this.route('show', {
       path: ':id'
     });
@@ -571,7 +570,77 @@ Router.map(function() {
       path: ':id/edit'
     });
   });
-  this.route('fractietypes', function() {
+  this.route('inzendingen-voor-toezicht', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-tax-types', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-nomenclatures', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-fiscal-periods', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-delivery-report-types', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-account-acceptance-statuses', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('toezicht-document-authenticity-types', function() {
+    this.route('show', {
+      path: ':id'
+    });
+    this.route('new');
+
+    this.route('edit', {
+      path: ':id/edit'
+    });
+  });
+  this.route('form-solutions', function() {
     this.route('show', {
       path: ':id'
     });

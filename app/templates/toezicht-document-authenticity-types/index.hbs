@@ -1,7 +1,7 @@
-{{!-- Page to list besluit-types --}}
+{{!-- Page to list toezicht-document-authenticity-types --}}
 <div class="content">
-  <h2 class="title">{{t (humanize 'besluit-types')}}</h2>
-  <div class="actions">{{#link-to "besluit-types.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
+  <h2 class="title">{{t (humanize 'toezicht-document-authenticity-types')}}</h2>
+  <div class="actions">{{#link-to "toezicht-document-authenticity-types.new" class="btn new" title="Create new item" tagName="button" }}Create{{/link-to}}</div>
   {{#if model}}
     <table>
       <thead>
@@ -10,16 +10,16 @@
           {{sortable-table-header attribute="label" currentSort=sort}}
 
           
-          {{sortable-table-header attribute="decidableBy" currentSort=sort}}
+          
         </tr>
       </thead>
       <tbody>
         {{#each model as |item|}}
-          {{#link-to "besluit-types.show" item tagName='tr' }}
+          {{#link-to "toezicht-document-authenticity-types.show" item tagName='tr' }}
               <td>{{handle-attribute model=item attribute='id' classes='properties__data'}}</td>
             {{handle-attribute model=item attribute='label' tagName='td' classes='properties__data'}}
 
-            {{display-model-hasmany-relationship   model=item.decidableBy tagName='td' itemRoute='bestuurseenheid-classificatie-codes.show' configuredLabel='stringRep'}}
+
           {{/link-to}}
         {{/each}}
       </tbody>
@@ -30,8 +30,8 @@
     {{/if}}
   {{else}}
     <div class="empty">
-      No {{t (humanize 'besluit-types')}} in the database.
-      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "besluit-type")}}.
+      No {{t (humanize 'toezicht-document-authenticity-types')}} in the database.
+      Click on the <i class="fa fa-plus" aria-hidden="true"></i> button to create a new {{t (humanize "toezicht-document-authenticity-type")}}.
     </div>
   {{/if}}
 </div>

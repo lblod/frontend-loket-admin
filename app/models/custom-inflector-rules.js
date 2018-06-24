@@ -2,7 +2,6 @@ import Inflector from 'ember-inflector';
 
 const inflector = Inflector.inflector;
 
-// duplicated in /blueprints/mu-resource/index.js
 inflector.plural(/$/,'en');
 inflector.plural(/e$/,'es');
 inflector.plural(/e([lnr])$/,'e$1s');
@@ -45,6 +44,9 @@ inflector.irregular('bbcdr-report', 'bbcdr-reports');
 inflector.irregular('validation', 'validations');
 inflector.irregular('validation-execution', 'validation-executions');
 inflector.irregular('validation-error', 'validation-errors');
+inflector.irregular('inzending-voor-toezicht', 'inzendingen-voor-toezicht');
+inflector.irregular('toezicht-account-acceptance-status', 'toezicht-account-acceptance-statuses');
+inflector.irregular('toezicht-fiscal-period', 'toezicht-fiscal-periods');
 inflector.irregular('form-solution', 'form-solutions');
 // Meet Ember Inspector's expectation of an export
 export default {};

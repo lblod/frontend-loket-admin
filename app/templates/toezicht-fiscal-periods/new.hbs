@@ -1,17 +1,17 @@
-{{!-- Page to create a new besluit-type --}}
+{{!-- Page to create a new toezicht-fiscal-period --}}
 <div class="new">
-  <h2 class="title">{{t (humanize 'New besluit-type')}}</h2>
+  <h2 class="title">{{t (humanize 'New toezicht-fiscal-period')}}</h2>
 
   {{!--
-    Actions to save new besluit-type
-    or delete new besluit-type.
+    Actions to save new toezicht-fiscal-period
+    or delete new toezicht-fiscal-period.
   --}}
   <div class="actions">
-    <button type="button" class="btn save" title="Save new besluit-type" {{action 'save' model}}>Save</button>
+    <button type="button" class="btn save" title="Save new toezicht-fiscal-period" {{action 'save' model}}>Save</button>
     <button type="button" class="btn cancel" title="Cancel" {{action 'cancel' model}}>Cancel</button>
   </div>
 
-  {{!-- Table to show details of besluit-type. --}}
+  {{!-- Table to show details of toezicht-fiscal-period. --}}
   <table>
     <thead>
       <tr>
@@ -26,7 +26,7 @@
 <td align='middle'>{{handle-attribute model=model attribute='label' editable=true}}</td>
       </tr>
       
-      <tr><td>decidableBy</td><td align='middle'>{{edit-has-many relName=model.decidableBy relType="bestuurseenheid-classificatie-code"}}</td></tr>
+      
     </tbody>
   </table>
 </div>
